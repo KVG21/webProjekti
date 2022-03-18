@@ -12,6 +12,7 @@ const ravintolarouter = require('./routes/ravintola');
 const ravintoloitsijarouter = require('./routes/ravintoloitsija');
 const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
+const kirjautuminenrouter = require('./routes/kirjautuminen')
 
 app.use(bodyParser.json());
 app.use(logger('dev'));
@@ -29,6 +30,7 @@ app.use('/ravintola',ravintolarouter);
 app.use('/ravintoloitsija',ravintoloitsijarouter);
 app.use('/tuote',tuoterouter);
 app.use('/historia',historiarouter);
+app.use('/kirjautuminen',kirjautuminenrouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

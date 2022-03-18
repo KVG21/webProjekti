@@ -8,16 +8,16 @@ const ravintola = {
         return db.query('select * from ravintola', callback);
     }, 
     add: function(ravintola, callback) {
-        return db.query('insert into ravintola (idRavintola, Nimi, Osoite, Aukiolo, Kuva, Tyyppi, Hintataso, Arviointi) values(?,?,?,?,?,?,?,?)',
-        [ravintola.idRavintola, ravintola.Nimi, ravintola.Osoite, ravintola.Aukiolo, ravintola.Kuva, ravintola.Tyyppi, ravintola.Hintataso, ravintola.Arviointi], callback);
+        return db.query('insert into ravintola (Nimi, Osoite, Aukiolo, Kuva, Tyyppi, Hintataso, Arviointi, RavintoloitsijaID) values(?,?,?,?,?,?,?,?)',
+        [ravintola.Nimi, ravintola.Osoite, ravintola.Aukiolo, ravintola.Kuva, ravintola.Tyyppi, ravintola.Hintataso, ravintola.Arviointi,ravintola.RavintoloitsijaID], callback);
     },
     delete: function(id, callback){
         return db.query('delete from ravintola where idRavintola=?',[id], callback);
     },
     update: function(idRavintola, ravintola, callback){
         return db.query(
-            'update ravintola set Nimi=?, Osoite=?, Aukiolo=?, Kuva=?, Tyyppi=?, Hintataso=?, Arviointi=? where idRavintola=?',
-            [ravintola.Nimi, ravintola.Osoite, ravintola.Aukiolo, ravintola.Kuva, ravintola.Tyyppi, ravintola.Hintataso, ravintola.Arviointi, idRavintola], callback);
+            'update ravintola set Nimi=?, Osoite=?, Aukiolo=?, Kuva=?, Tyyppi=?, Hintataso=?, Arviointi=?, RavintoloitsijaID=? where idRavintola=?',
+            [ravintola.Nimi, ravintola.Osoite, ravintola.Aukiolo, ravintola.Kuva, ravintola.Tyyppi, ravintola.Hintataso, ravintola.Arviointi,ravintola.RavintoloitsijaID, idRavintola], callback);
     }
 };
 module.exports = ravintola;

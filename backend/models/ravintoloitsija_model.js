@@ -9,8 +9,8 @@ const ravintoloitsija = {
     }, 
     add: function(ravintoloitsija, callback) {
         bcrypt.hash(ravintoloitsija.Salasana,10,function(err,hash){
-        return db.query('insert into ravintoloitsija (idRavintoloitsija, Etunimi, Sukunimi, Puhelinnumero, Ytunnus, Salasana, Ravintola_idRavintola) values(?,?,?,?,?,?,?)',
-        [ravintoloitsija.idRavintoloitsija, ravintoloitsija.Etunimi, ravintoloitsija.Sukunimi, ravintoloitsija.Puhelinnumero, ravintoloitsija.Ytunnus, hash, ravintoloitsija.Ravintola_idRavintola], callback);});  
+        return db.query('insert into ravintoloitsija (Etunimi, Sukunimi, Puhelinnumero, Ytunnus, Salasana) values(?,?,?,?,?)',
+        [ravintoloitsija.Etunimi, ravintoloitsija.Sukunimi, ravintoloitsija.Puhelinnumero, ravintoloitsija.Ytunnus, hash], callback);});  
     },
     delete: function(id, callback){
         return db.query('delete from ravintoloitsija where idravintoloitsija=?',[id], callback);

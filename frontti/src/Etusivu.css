@@ -1,0 +1,49 @@
+/*Maijan etusivut*/
+
+.ravintolaContainer {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  justify-content: center;
+}
+.Items{
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 1000px;
+  cursor: pointer;
+}
+
+.Desc{
+  font-size: 15px;
+}
+
+
+.searchBarContainer{
+  display: flex;
+  padding: 20px;
+  background-color:rgb(236, 98, 121);
+}
+
+.searchBarItems{
+  width: 400px;
+  background-color: rgb(245, 23, 97);
+  font-size: 15px;
+  padding: 15px;
+
+}
+
+.name{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color:rgb(236, 98, 121);
+}
+
+.searchButton {
+  font-size: 15px;
+  border: 5px solid black;
+  padding:20px;
+}

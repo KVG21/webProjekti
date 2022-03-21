@@ -6,7 +6,7 @@ import { useState } from "react";
 import Searchbar from './components/Searchbar'
 import './Etusivu.js';
 
-function ruokee() {
+function Ravintolasivu() {
 
     const [ ruoka, setruoka ] = useState([
     ]);
@@ -19,4 +19,4 @@ function ruokee() {
 
 }
 
-export default ruokee;
+export default Ravintolasivu;

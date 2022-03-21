@@ -2,18 +2,26 @@
 
 import './ravintolasivu.js';
 import './Etusivu.css';
+import Tuotesivu from './components/Tuotesivu'
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Searchbar from './components/Searchbar'
 
-function etusivu() {
+function Etusivu() {
 
     const [ ravintola, setravintola ] = useState([]);
-
     useEffect (() => {});
+
+    const Tekonakyma = Tuotesivu //importtaa oma sivusi componentteista ja vaihda se tuohon niin pääset helposti muokkaamaan omaa sivua
+
     return (
-        <div className = "etusivu">
-            <Searchbar/>
+
+        <div>
+            <Tekonakyma/>
+        </div>
+
+        /*<div className = "etusivu">
+           <Searchbar/>
             <div className='ravintolaContainer'>
 
                 <div className='Items'>
@@ -21,9 +29,9 @@ function etusivu() {
 
             </div>
         </div>
-        </div>
+        </div>*/
     );
 
 }
 
-export default etusivu;
+export default Etusivu;

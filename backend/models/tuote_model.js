@@ -8,8 +8,8 @@ const tuote = {
         return db.query('select * from tuote', callback);
     }, 
     add: function(tuote, callback) {
-        return db.query('insert into tuote (idTuote, Nimi, Kuvaus, Hinta, Kuva, Ravintola_idRavintola) values(?,?,?,?,?,?)',
-        [tuote.idTuote, tuote.Nimi, tuote.Kuvaus, tuote.Hinta, tuote.Kuva, tuote.Ravintola_idRavintola], callback);
+        return db.query('insert into tuote (Nimi, Kuvaus, Hinta, Kuva, Ravintola_idRavintola) values(?,?,?,?,?)',
+        [tuote.Nimi, tuote.Kuvaus, tuote.Hinta, tuote.Kuva, tuote.Ravintola_idRavintola], callback);
     },
     delete: function(id, callback){
         return db.query('delete from tuote where idTuote=?',[id], callback);

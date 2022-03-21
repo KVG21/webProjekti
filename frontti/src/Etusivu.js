@@ -27,11 +27,25 @@ function Etusivu() {
         RavintoloitsijaID: item.RavintoloitsijaID  
         })})
     }
-    const Tekonakyma = Ravintoloitsija //importtaa oma sivusi componentteista ja vaihda se tuohon niin pääset helposti muokkaamaan omaa sivua
+
+    const uusiTuote = (item) => {
+        fetch(`http://localhost:3001/tuote`,{ method: 'POST',
+        headers:{'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+        Nimi: item.tuotenimi,
+        Kuvaus: item.kuvaus,
+        Hinta: item.hinta,
+        Kuva: item.tuotekuva,
+        Ravintola_idRavintola: item.ravintolaID,    
+        })})
+    }
+    
 
     return (
         <div>
-        <Tekonakyma uusiRavintola={uusiRavintola}/>
+        <Ravintoloitsija 
+        uusiTuote={uusiTuote}
+        uusiRavintola={uusiRavintola}/>
         </div>
         /*<div className = "etusivu">
            <Searchbar/>

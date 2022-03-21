@@ -1,11 +1,12 @@
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 
 const logger = require('morgan');
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3001
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
@@ -15,6 +16,7 @@ const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

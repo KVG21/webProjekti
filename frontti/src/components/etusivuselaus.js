@@ -1,5 +1,4 @@
 import React from "react";
-import etusivu from "../Etusivu";
 
 export default function ravintola(props) {
     return (

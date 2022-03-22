@@ -2,7 +2,36 @@ import React, { useState } from 'react';
 import './Ravintoloitsija.css'
 
 
-export default function Ravintoloitsija(props) {
+export default function Ravintoloitsija() {
+    const uusiRavintola = (item) => {
+        fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
+        headers:{'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+        Nimi: item.Nimi,
+        Osoite: item.Osoite,
+        Aukiolo: item.Aukiolo,
+        Kuva: item.Kuva,
+        Tyyppi: item.Tyyppi,
+        Hintataso: item.Hintataso,
+        Arviointi: item.Arviointi,
+        RavintoloitsijaID: item.RavintoloitsijaID  
+        })})
+    }
+
+    const uusiTuote = (item) => {
+        fetch(`http://localhost:3001/tuote`,{ method: 'POST',
+        headers:{'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+        Nimi: item.tuotenimi,
+        Kuvaus: item.kuvaus,
+        Hinta: item.hinta,
+        Kuva: item.tuotekuva,
+        Ravintola_idRavintola: item.ravintolaID,    
+        })})
+    }
+
+
+
     const [Nimi, setNimi] = useState("")
     const [Osoite, setOsoite] = useState("")
     const [Aukiolo, setAukiolo] = useState("")
@@ -32,7 +61,7 @@ export default function Ravintoloitsija(props) {
                     <div className="inputDesc"> Arviointi <input value={Arviointi} onChange={(event) => setArviointi(event.currentTarget.value)} type="text"/></div>
                     <div className="inputDesc"> Ravintoloitsija ID <input value={RavintoloitsijaID} onChange={(event) => setRavintoloitsijaID(event.currentTarget.value)} type="text"/></div>
         
-                        <button className="saveNappi"onClick={()=>props.uusiRavintola({
+                        <button className="saveNappi"onClick={()=>uusiRavintola({
                             Nimi,Osoite,Aukiolo,Kuva,Tyyppi,Hintataso,Arviointi,RavintoloitsijaID
                         })}>Tallenna</button>
                         
@@ -46,7 +75,7 @@ export default function Ravintoloitsija(props) {
                         <div className="inputDesc"> Kuva URL <input value={tuotekuva} onChange={(event) => setTuotekuva(event.currentTarget.value)} type="text"/></div>
                         <div className="inputDesc"> Ravintola ID <input value={ravintolaID} onChange={(event) => setRavintolaID(event.currentTarget.value)} type="text"/></div>
 
-                            <button className="saveNappi" onClick={()=>props.uusiTuote({
+                            <button className="saveNappi" onClick={()=>uusiTuote({
                                 tuotenimi,kuvaus,hinta,tuotekuva,ravintolaID
                             })}>Tallenna</button>
             </div>    

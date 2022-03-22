@@ -1,0 +1,43 @@
+.ravintolaCont{
+    display: flex;
+    flex-direction: column;
+}
+
+.tuoteCont{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDesc{
+    width:200px;
+    float: left;
+    margin-left:50px;
+}
+
+input{
+    margin-left:10px;
+}
+
+.luonti{
+    margin-left:50px;
+}
+
+.saveNappi{
+    margin-top:10px;
+    width:100px;
+    margin-left:80px;
+    background-color: white;
+    color:black;
+    border: 2px solid #4CAF50;
+    border-radius:10px;
+    cursor: pointer;
+}
+.saveNappi:hover{
+    background-color:#4CAF50;
+    color:white;
+}
+.saveNappi:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

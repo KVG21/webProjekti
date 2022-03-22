@@ -1,17 +1,9 @@
-/*Maijan etusivut*/
+import './App.css';
+import React from "react";
 
-import './ravintolasivu.js';
-import './Etusivu.css';
-import Tuotesivu from './components/Tuotesivu'
-import React, { useEffect } from "react";
-import { useState } from "react";
-import Searchbar from './components/Searchbar'
 import Ravintoloitsija from './components/Ravintoloitsija'
 
-function Etusivu() {
-
-    const [ ravintola, setravintola ] = useState([]);
-    useEffect (() => {});
+function App() {
 
     const uusiRavintola = (item) => {
         fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
@@ -42,23 +34,14 @@ function Etusivu() {
     
 
     return (
-        <div>
+        <div className="App">
         <Ravintoloitsija 
         uusiTuote={uusiTuote}
         uusiRavintola={uusiRavintola}/>
         </div>
-        /*<div className = "etusivu">
-           <Searchbar/>
-            <div className='ravintolaContainer'>
 
-                <div className='Items'>
-                    <h1>Mäkkäri</h1>
-
-            </div>
-        </div>
-        </div>*/
     );
 
 }
 
-export default Etusivu;
+export default App;

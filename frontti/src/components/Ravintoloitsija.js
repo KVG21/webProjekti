@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import './Ravintoloitsija.css'
 
 
-
-function Ravintoloitsija(props) {
+export default function Ravintoloitsija(props) {
     const [Nimi, setNimi] = useState("")
     const [Osoite, setOsoite] = useState("")
     const [Aukiolo, setAukiolo] = useState("")
@@ -17,33 +17,36 @@ function Ravintoloitsija(props) {
     const [hinta, setHinta] = useState("")
     const [tuotekuva, setTuotekuva] = useState("")
     const [ravintolaID, setRavintolaID] = useState("")
+    
   return (
         <div>
-            <div classname="ravintolaCont">
-                <h2 classname="luontiTitle">Lisää ravintola</h2>
-                    <div classname="inputDesc"> Nimi <input value={Nimi} onChange={(event) => setNimi(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Osoite <input value={Osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Aukiolo <input value={Aukiolo} onChange={(event) => setAukiolo(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Kuva URL <input value={Kuva} onChange={(event) => setKuva(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Tyyppi <input value={Tyyppi} onChange={(event) => setTyyppi(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Hintataso <input value={Hintataso} onChange={(event) => setHintataso(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Arviointi <input value={Arviointi} onChange={(event) => setArviointi(event.currentTarget.value)} type="text"/></div>
-                    <div classname="inputDesc"> Ravintoloitsija ID <input value={RavintoloitsijaID} onChange={(event) => setRavintoloitsijaID(event.currentTarget.value)} type="text"/></div>
+            <div className="ravintolaCont">
+                <h2 className="luonti">Lisää ravintola</h2>
+                    
+                    <div className="inputDesc"> Nimi <br></br> <input value={Nimi} onChange={(event) => setNimi(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Osoite <input value={Osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Aukiolo <input value={Aukiolo} onChange={(event) => setAukiolo(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Kuva URL <input value={Kuva} onChange={(event) => setKuva(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Tyyppi <input value={Tyyppi} onChange={(event) => setTyyppi(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Hintataso <input value={Hintataso} onChange={(event) => setHintataso(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Arviointi <input value={Arviointi} onChange={(event) => setArviointi(event.currentTarget.value)} type="text"/></div>
+                    <div className="inputDesc"> Ravintoloitsija ID <input value={RavintoloitsijaID} onChange={(event) => setRavintoloitsijaID(event.currentTarget.value)} type="text"/></div>
         
-                        <button classname="saveNappi"onClick={()=>props.uusiRavintola({
+                        <button className="saveNappi"onClick={()=>props.uusiRavintola({
                             Nimi,Osoite,Aukiolo,Kuva,Tyyppi,Hintataso,Arviointi,RavintoloitsijaID
                         })}>Tallenna</button>
+                        
             </div>
 
-            <div classname="tuoteCont">
-                <h2 classname="luontiTitle">Lisää tuote</h2>
-                        <div classname="inputDesc"> Nimi <input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
-                        <div classname="inputDesc"> Kuvaus <input value={kuvaus} onChange={(event) => setKuvaus(event.currentTarget.value)} type="text"/></div>
-                        <div classname="inputDesc"> Hinta <input value={hinta} onChange={(event) => setHinta(event.currentTarget.value)} type="text"/></div>
-                        <div classname="inputDesc"> Kuva <input value={tuotekuva} onChange={(event) => setTuotekuva(event.currentTarget.value)} type="text"/></div>
-                        <div classname="inputDesc"> Ravintola ID <input value={ravintolaID} onChange={(event) => setRavintolaID(event.currentTarget.value)} type="text"/></div>
+            <div className="tuoteCont">
+                <h2 className="luonti">Lisää tuote</h2>
+                        <div className="inputDesc"> Nimi <br></br><input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
+                        <div className="inputDesc"> Kuvaus <input value={kuvaus} onChange={(event) => setKuvaus(event.currentTarget.value)} type="text"/></div>
+                        <div className="inputDesc"> Hinta <input value={hinta} onChange={(event) => setHinta(event.currentTarget.value)} type="text"/></div>
+                        <div className="inputDesc"> Kuva URL <input value={tuotekuva} onChange={(event) => setTuotekuva(event.currentTarget.value)} type="text"/></div>
+                        <div className="inputDesc"> Ravintola ID <input value={ravintolaID} onChange={(event) => setRavintolaID(event.currentTarget.value)} type="text"/></div>
 
-                            <button classname="saveNappi" onClick={()=>props.uusiTuote({
+                            <button className="saveNappi" onClick={()=>props.uusiTuote({
                                 tuotenimi,kuvaus,hinta,tuotekuva,ravintolaID
                             })}>Tallenna</button>
             </div>    
@@ -51,4 +54,3 @@ function Ravintoloitsija(props) {
 
   )
 }
-export default Ravintoloitsija;

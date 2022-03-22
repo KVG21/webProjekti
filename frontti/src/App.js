@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 
 import Ravintoloitsija from './components/Ravintoloitsija'
+import Etusivu from './components/Etusivu'
 
 function App() {
 
@@ -34,11 +35,14 @@ function App() {
     
 
     return (
-        <div className="App">
-        <Ravintoloitsija 
+
+        <Etusivu/>
+
+       /* <div className="App">
+         <Ravintoloitsija 
         uusiTuote={uusiTuote}
-        uusiRavintola={uusiRavintola}/>
-        </div>
+        uusiRavintola={uusiRavintola}/> 
+        </div>*/
 
     );
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import  ReactDOM  from 'react-dom';
-export default function rekisteroityminen(props){
-    function MyForm() {
+
+export default function Rekisteroityminen(props){
+
         return(
           <form>
             <label>Etunimi:
@@ -21,6 +21,5 @@ export default function rekisteroityminen(props){
             </label>
            
           </form>
-
+        )
 }
-ReactDOM.render(<MyForm/>, document.getElementById('root'));

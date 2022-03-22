@@ -1,7 +1,6 @@
 import React from 'react';
-import  ReactDOM  from 'react-dom';
-export default function kentat(props){
-    function MyForm() {
+
+export default function Kentat(props){
         return(
           <form>
             <label>Käyttäjätunnus:
@@ -11,6 +10,5 @@ export default function kentat(props){
             </label>
             </label>
           </form>
-
+        )
 }
-ReactDOM.render(<MyForm/>, document.getElementById('root'));

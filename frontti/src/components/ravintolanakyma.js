@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ravintola(props) {
+export default function Ravintolanakyma(props) {
     return (
         <div className="Ravintolat">
         </div>

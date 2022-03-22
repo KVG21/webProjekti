@@ -30,8 +30,6 @@ export default function Ravintoloitsija() {
         })})
     }
 
-
-
     const [Nimi, setNimi] = useState("")
     const [Osoite, setOsoite] = useState("")
     const [Aukiolo, setAukiolo] = useState("")

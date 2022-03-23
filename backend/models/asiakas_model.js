@@ -10,10 +10,10 @@ const asiakas = {
     }, 
 
     add: function(asiakas, callback) {
-        bcrypt.hash(asiakas.Salasana,10,function(err,hash){
+        bcrypt.hash(asiakas.salasana,10,function(err,hash){
           return db.query(
-        'insert into asiakas (Etunimi,Sukunimi,Puhelinnumero,Kotiosoite,Salasana) values(?,?,?,?,?)',
-        [asiakas.Etunimi, asiakas.Sukunimi, asiakas.Puhelinnumero, asiakas.Kotiosoite, hash],
+        'insert into asiakas (etunimi,sukunimi,puhnro,kotiosoite,salasana) values(?,?,?,?,?)',
+        [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnro, asiakas.kotiosoite, hash],
         callback);});      
     },
     delete: function (id, callback){
@@ -21,10 +21,10 @@ const asiakas = {
     }, 
     update: function (idAsiakas, asiakas, callback){
 
-        bcrypt.hash(asiakas.Salasana,10,function(err,hash){
+        bcrypt.hash(asiakas.salasana,10,function(err,hash){
             return db.query(
-            'update asiakas set Etunimi=?, Sukunimi=?, Puhelinnumero=?, Kotiosoite=?, Salasana=? where idAsiakas=?',
-              [asiakas.Etunimi, asiakas.Sukunimi, asiakas.Puhelinnumero, asiakas.Kotiosoite, hash, idAsiakas],
+            'update asiakas set etunimi=?, sukunimi=?, puhnro=?, kotiosoite=?, Salasana=? where idAsiakas=?',
+              [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnrro, asiakas.kotiosoite, hash, idAsiakas],
               callback);});
     }
 };

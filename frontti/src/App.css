@@ -1,5 +1,5 @@
 .ravintolaContainer {
-  display: grid;
+  display: flex;
   grid-template-columns: 25% 25% 25%;
   justify-content: center;
 }
@@ -7,11 +7,16 @@
   border: 1px solid black;
   padding: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+ 
   align-items: center;
   min-width: 1000px;
   cursor: pointer;
+}
+
+.Tiedot{
+  display: column;
+  font-size: 40px;
+  margin-left: 15%;
 }
 
 .Desc{

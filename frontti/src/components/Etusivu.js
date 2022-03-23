@@ -19,9 +19,12 @@ useEffect(async() => {
     <div className = "etusivu">
            <Searchbar/>
             <div className='ravintolaContainer'>
-              {ravintola.map(({Nimi, Osoite, Aukiolo, Kuva, Tyyppi, Hintataso, Arviointi}) => (
+            {ravintola.map(({Nimi, Osoite, Aukiolo, Kuva, Tyyppi, Hintataso, Arviointi}) => (
+                <div className='ravintolaContainer'>
+
                 <div className='Items'>
-                  {Kuva}
+                {Kuva}
+                <div className = "Tiedot">
                   <p>{Nimi}</p>
                   <p>{Osoite}</p>
                   <p>{Aukiolo}</p>
@@ -29,8 +32,9 @@ useEffect(async() => {
                   <p>{Hintataso}</p>
                   <p>{Arviointi}</p>
                 </div>
+                </div>
+                </div>
               ))}
-                
         </div>
         </div>
   )

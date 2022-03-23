@@ -1,8 +1,8 @@
 const db = require('../db');
 
 const kirjautuminen={
-  checkPassword: function(Etunimi, callback) {
-      return db.query('SELECT Salasana FROM asiakas WHERE Etunimi = ?',[Etunimi], callback); 
+  checkPassword: function(etunimi, callback) {
+      return db.query('SELECT salasana FROM asiakas WHERE etunimi = ?',[etunimi], callback); 
     }
 };
           

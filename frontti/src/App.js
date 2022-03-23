@@ -11,13 +11,10 @@ export default function App() {
     return (
         <div>
             <Etusivu/>
-            {/*
             <nav>
-                <button className="naviNappi"><Link className="naviNimi" to="/Ravintola">Ravintoloitsija</Link></button>   
+                <button className="naviNappi"><Link className="naviNimi" to="/Ravintoloitsija">Ravintoloitsija</Link></button>   
             </nav>
-    */}
         </div>
     );
 
 }
-

@@ -1,11 +1,14 @@
 .ravintolaCont{
     display: flex;
     flex-direction: column;
+    float: left;
+    margin-left:500px;
 }
 
 .tuoteCont{
     display: flex;
     flex-direction: column;
+    margin-left: 1000px;
 }
 
 .inputDesc{
@@ -20,6 +23,7 @@ input{
 
 .luonti{
     margin-left:50px;
+    text-decoration: underline;
 }
 
 .saveNappi{

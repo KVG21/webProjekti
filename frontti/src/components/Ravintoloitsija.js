@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import './Ravintoloitsija.css'
 
 
@@ -47,6 +48,11 @@ export default function Ravintoloitsija() {
     
   return (
         <div>
+            <div className="name">
+            <nav className="navigointi">
+            <button className="naviNappi"><Link className="naviNimi" to="/">Etusivu</Link></button>
+            </nav> 
+            </div>
             <div className="ravintolaCont">
                 <h2 className="luonti">Lisää ravintola</h2>
                     
@@ -64,7 +70,6 @@ export default function Ravintoloitsija() {
                         })}>Tallenna</button>
                         
             </div>
-
             <div className="tuoteCont">
                 <h2 className="luonti">Lisää tuote</h2>
                         <div className="inputDesc"> Nimi <br></br><input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
@@ -76,8 +81,10 @@ export default function Ravintoloitsija() {
                             <button className="saveNappi" onClick={()=>uusiTuote({
                                 tuotenimi,kuvaus,hinta,tuotekuva,ravintolaID
                             })}>Tallenna</button>
-            </div>    
+            </div>   
+
         </div>
+        
 
   )
 }

@@ -33,9 +33,9 @@ function(req, res){
     });
 });
 
-router.delete('/:idtuote',
+router.delete('/:idTuote',
 function(req,res){
-    tuote.delete(req.params.idtuote, function(err, dbResult){
+    tuote.delete(req.params.idTuote, function(err, dbResult){
         if(err) {
             res.json(err);
         } else{
@@ -44,8 +44,8 @@ function(req,res){
     });
 });
 
-router.put('/:idtuote', function(req, res){
-    tuote.update(req.params.idtuote, req.body, function(err, dbResult){
+router.put('/:idTuote', function(req, res){
+    tuote.update(req.params.idTuote, req.body, function(err, dbResult){
         if(err) {
             res.json(err);
         } else {

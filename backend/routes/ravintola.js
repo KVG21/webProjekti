@@ -33,9 +33,9 @@ function(req, res){
     });
 });
 
-router.delete('/:idravintola',
+router.delete('/:idRavintola',
 function(req,res){
-    ravintola.delete(req.params.idravintola, function(err, dbResult){
+    ravintola.delete(req.params.idRavintola, function(err, dbResult){
         if(err) {
             res.json(err);
         } else{
@@ -44,8 +44,8 @@ function(req,res){
     });
 });
 
-router.put('/:idravintola', function(req, res){
-    ravintola.update(req.params.idravintola, req.body, function(err, dbResult){
+router.put('/:idRavintola', function(req, res){
+    ravintola.update(req.params.idRavintola, req.body, function(err, dbResult){
         if(err) {
             res.json(err);
         } else {

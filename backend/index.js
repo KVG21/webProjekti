@@ -10,7 +10,6 @@ const port = 3001
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
-const ravintoloitsijarouter = require('./routes/ravintoloitsija');
 const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
@@ -29,7 +28,6 @@ app.get('/', (req, res) => {
 
 app.use('/asiakas',asiakasrouter);
 app.use('/ravintola',ravintolarouter);
-app.use('/ravintoloitsija',ravintoloitsijarouter);
 app.use('/tuote',tuoterouter);
 app.use('/historia',historiarouter);
 app.use('/kirjautuminen',kirjautuminenrouter);

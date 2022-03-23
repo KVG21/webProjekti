@@ -8,16 +8,16 @@ const tuote = {
         return db.query('select * from tuote', callback);
     }, 
     add: function(tuote, callback) {
-        return db.query('insert into tuote (Nimi, Kuvaus, Hinta, Kuva, Ravintola_idRavintola) values(?,?,?,?,?)',
-        [tuote.Nimi, tuote.Kuvaus, tuote.Hinta, tuote.Kuva, tuote.Ravintola_idRavintola], callback);
+        return db.query('insert into tuote (nimi, kuvaus, hinta, kuva, Ravintola_idRavintola) values(?,?,?,?,?)',
+        [tuote.nimi, tuote.kuvaus, tuote.hinta, tuote.kuva, tuote.Ravintola_idRavintola], callback);
     },
     delete: function(id, callback){
         return db.query('delete from tuote where idTuote=?',[id], callback);
     },
     update: function(idTuote, tuote, callback){
         return db.query(
-            'update tuote set Nimi=?, Kuvaus=?, Hinta=?, Kuva=? where idTuote=?',
-            [tuote.Nimi, tuote.Kuvaus, tuote.Hinta, tuote.Kuva, idTuote], callback);
+            'update tuote set nimi=?, kuvaus=?, hinta=?, kuva=? where idTuote=?',
+            [tuote.nimi, tuote.kuvaus, tuote.hinta, tuote.kuva, idTuote], callback);
     }
 };
 module.exports = tuote;

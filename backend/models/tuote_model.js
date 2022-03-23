@@ -2,14 +2,14 @@ const db = require('../db');
 
 const tuote = {
     getById: function(id, callback) {
-        return db.query('select * from tuote where idTuote=?',[id], callback);
+        return db.query('select * from tuote where ravintolaID=?',[id], callback);
     },
     getAll: function(callback) {
         return db.query('select * from tuote', callback);
     }, 
     add: function(tuote, callback) {
-        return db.query('insert into tuote (nimi, kuvaus, hinta, kuva, Ravintola_idRavintola) values(?,?,?,?,?)',
-        [tuote.nimi, tuote.kuvaus, tuote.hinta, tuote.kuva, tuote.Ravintola_idRavintola], callback);
+        return db.query('insert into tuote (nimi, kuvaus, hinta, kuva, ravintolaID) values(?,?,?,?,?)',
+        [tuote.nimi, tuote.kuvaus, tuote.hinta, tuote.kuva, tuote.ravintolaID], callback);
     },
     delete: function(id, callback){
         return db.query('delete from tuote where idTuote=?',[id], callback);

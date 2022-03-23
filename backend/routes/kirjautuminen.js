@@ -5,31 +5,31 @@ const kirjautuminen = require('../models/kirjautuminen_model');
 
 router.post('/', 
   function(request, response) {
-    if(request.body.Etunimi && request.body.Salasana){
-      const Etunimi = request.body.Etunimi;
-      const Salasana = request.body.Salasana;
-        kirjautuminen.checkPassword(Etunimi, function(dbError, dbResult) {
+    if(request.body.etunimi && request.body.salasana){
+      const etunimi = request.body.etunimi;
+      const salasana = request.body.salasana;
+        kirjautuminen.checkPassword(etunimi, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
           else{
             if (dbResult.length > 0) {
-              bcrypt.compare(Salasana,dbResult[0].Salasana, function(err,compareResult) 
+              bcrypt.compare(salasana,dbResult[0].salasana, function(err,compareResult) 
               {
                 if(compareResult) {
-                  console.log("success");
+                  console.log("Onnistui");
                   response.send(true);
                   
                 }
                 else {
-                    console.log("wrong Salasana");
+                    console.log("Väärä Salasana");
                     response.send(false);
                 }			
               }
               );
             }
             else{
-              console.log("user does not exists");
+              console.log("Käyttäjää ei ole olemassa");
               response.send(false);
             }
           }
@@ -37,7 +37,7 @@ router.post('/',
         );
       }
     else{
-      console.log("Etunimi or Salasana missing");
+      console.log("Etunimi tai Salasana puuttuu");
       response.send(false);
     }
   }

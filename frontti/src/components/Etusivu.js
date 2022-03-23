@@ -19,18 +19,18 @@ useEffect(async() => {
     <div className = "etusivu">
            <Searchbar/>
             <div className='ravintolaContainer'>
-            {ravintola.map(({Nimi, Osoite, Aukiolo, Kuva, Tyyppi, Hintataso, Arviointi}) => (
+            {ravintola.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
                 <div className='ravintolaContainer'>
 
                 <div className='Items'>
-                {Kuva}
+                {kuva}
                 <div className = "Tiedot">
-                  <p>{Nimi}</p>
-                  <p>{Osoite}</p>
-                  <p>{Aukiolo}</p>
-                  <p>{Tyyppi}</p>
-                  <p>{Hintataso}</p>
-                  <p>{Arviointi}</p>
+                  <p>{nimi}</p>
+                  <p>{osoite}</p>
+                  <p>{aukiolo}</p>
+                  <p>{tyyppi}</p>
+                  <p>{hintataso}</p>
+                  <p>{arviointi}</p>
                 </div>
                 </div>
                 </div>

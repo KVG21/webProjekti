@@ -1,0 +1,76 @@
+.tuoteMainContainer{
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 4%;
+    background-color: rgba(224, 222, 222, 0.726);
+    border: 2px solid black;
+    
+  }
+  .tuoteKontti {
+    display: column;
+    padding: 10px;
+    width: 70%;
+    margin-right: 5%;
+  }
+  
+  .tuotteet {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 20px;
+    margin-bottom: 5%;
+    background-color: rgba(245, 174, 108, 0.548);
+  }
+  
+  .ostoskoriKontti {
+    display: column;
+    padding: 10px;
+    width: 40%;
+    border-left: 1px solid black;
+  }
+  
+  .ostoskoriTavarat {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.568);
+    background-color: rgb(255, 83, 83);
+    font-weight: bolder;
+    font-size: 15px;
+    padding: 20px;
+    margin-bottom: 5%;
+  }
+  
+  .Otsikko {
+    font-size: 40px;
+    text-align: center;
+    font-weight: Bold;
+    font-style: italic
+  }
+  
+  .Napit{
+    background-color: green;
+    border-radius: 8px;
+    font-Size: 30px;
+  }
+
+  .YhteenvetoKontti {
+    display: column;  
+    border-top: 1px solid;
+    padding: 20px; 
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .yhteenVeto {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .red{
+    background-color: red;
+  }
+
+  

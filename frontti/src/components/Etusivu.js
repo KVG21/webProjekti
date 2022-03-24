@@ -23,7 +23,7 @@ useEffect(async() => {
                 <div className='ravintolaContainer'>
 
                 <div className='Items'>
-                {kuva}
+                <img className="ravintolaKuva"src={kuva} alt={nimi} />
                 <div className = "Tiedot">
                   <p>{nimi}</p>
                   <p>{osoite}</p>

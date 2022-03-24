@@ -96,3 +96,9 @@
 #myUL li a:hover:not(.header) {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
+.ravintolaKuva{
+  margin-left:30px;
+  width:350px;
+  height:350px;
+  border: 2px solid black;
+}

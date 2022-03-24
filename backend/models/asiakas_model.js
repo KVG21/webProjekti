@@ -13,7 +13,7 @@ const asiakas = {
         bcrypt.hash(asiakas.salasana,10,function(err,hash){
           return db.query(
         'insert into asiakas (etunimi,sukunimi,puhnro,osoite,salasana,tyyppi) values(?,?,?,?,?,?)',
-        [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnro, asiakas.osoite, hash,asiakas.tyyppi],
+        [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnro, asiakas.osoite, hash, asiakas.tyyppi],
         callback);});      
     },
     delete: function (id, callback){
@@ -24,7 +24,7 @@ const asiakas = {
         bcrypt.hash(asiakas.salasana,10,function(err,hash){
             return db.query(
             'update asiakas set etunimi=?, sukunimi=?, puhnro=?, osoite=?, salasana=?,tyyppi=? where idAsiakas=?',
-              [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnro, asiakas.osoite, hash,tyyppi, idAsiakas],
+              [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnro, asiakas.osoite, hash, asiakas.tyyppi, idAsiakas],
               callback);});
     }
 };

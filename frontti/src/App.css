@@ -1,7 +1,10 @@
 .ravintolaContainer {
   display: flex;
+  flex-direction: column;
   grid-template-columns: 25% 25% 25%;
   justify-content: center;
+  width: 900px;
+  margin-left:200px;
 }
 .Items{
   border: 1px solid black;

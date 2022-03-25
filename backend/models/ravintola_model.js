@@ -2,7 +2,7 @@ const db = require('../db');
 
 const ravintola = {
     getById: function(id, callback) {
-        return db.query('select * from ravintola where idRavintola=?',[id], callback);
+        return db.query('select * from ravintola where asiakasID=?',[id], callback);
     },
     getAll: function(callback) {
         return db.query('select * from ravintola', callback);

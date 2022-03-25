@@ -45,3 +45,22 @@ input{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+.poistoNappi{
+    margin-top:10px;
+    width:100px;
+    margin-left:80px;
+    background-color: white;
+    color:black;
+    border: 2px solid #fd3b00;
+    border-radius:10px;
+    cursor: pointer;
+}
+.poistoNappi:hover{
+    background-color:#fd3b00;
+    color:white;
+}
+.poistoNappi:active{
+    background-color: #fd3b00;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

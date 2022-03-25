@@ -1,9 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import './Ravintoloitsija.css'
 
 
 export default function Ravintoloitsija() {
+
+    const [ravintola, setRavintola] = useState([])
+
+    useEffect(async () => {
+        const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
+        res.json()
+        )
+        setRavintola(result)
+        console.log(result)
+    }, [])
+
+    const poistaRavintola = (idRavintola) => {
+        fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'DELETE'})
+        console.log(idRavintola)
+    }
+
+    /* const muokkaaRavintola = (item, idRavintola) => {
+        fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'PUT',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+            nimi: item.nimi,
+            osoite: item.osoite,
+            aukiolo: item.aukiolo,
+            kuva: item.kuva,
+            tyyppi: item.tyyppi,
+            hintataso: item.hintataso,
+            arviointi: item.arviointi,
+            asiakasID: item.asiakasID,
+        })})
+    }   */
+    
     const uusiRavintola = (item) => {
         fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
@@ -19,6 +50,21 @@ export default function Ravintoloitsija() {
         })})
     }
 
+    const [tuote, setTuote] = useState([])
+
+    useEffect(async () => {
+        const result = await fetch(`http://localhost:3001/tuote`).then((res) => 
+        res.json()
+        )
+        setTuote(result)
+        console.log(result)
+    }, [])
+
+    const poistaTuote = (idTuote) => {
+        fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'})
+        console.log(idTuote)
+    }
+
     const uusiTuote = (item) => {
         fetch(`http://localhost:3001/tuote`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
@@ -31,6 +77,7 @@ export default function Ravintoloitsija() {
         })})
     }
 
+ 
     const [nimi, setNimi] = useState("")
     const [osoite, setOsoite] = useState("")
     const [aukiolo, setAukiolo] = useState("")
@@ -68,7 +115,17 @@ export default function Ravintoloitsija() {
                         <button className="saveNappi"onClick={()=>uusiRavintola({
                             nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi,asiakasID
                         })}>Tallenna</button>
-                        
+
+                        <h2 className="luonti">Poista rafla</h2>
+                        <div>
+                            {ravintola.map(({idRavintola,nimi}) =>(
+                                <div className="poistaCont">
+                                    <p>{nimi}</p>
+                                    <button className="poistoNappi" onClick={ ()=>poistaRavintola(idRavintola)}>Poista</button>
+                                    </div>
+                            ))}
+                        </div>
+
             </div>
 
             <div className="tuoteCont">
@@ -82,6 +139,17 @@ export default function Ravintoloitsija() {
                             <button className="saveNappi" onClick={()=>uusiTuote({
                                 tuotenimi,kuvaus,hinta,tuotekuva,ravintolaID
                             })}>Tallenna</button>
+
+                            <h2 className="luonti">Poista tuote</h2>
+                        <div>
+                            {tuote.map(({idTuote,nimi}) =>(
+                                <div className="poistaCont">
+                                    <p>{nimi}</p>
+                                    <button className="poistoNappi" onClick={ ()=>poistaTuote(idTuote)}>Poista</button>
+                                    </div>
+                            ))}
+                        </div>
+
             </div>   
 
         </div>

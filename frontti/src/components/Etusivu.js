@@ -1,6 +1,7 @@
 import React from 'react'
 import Searchbar from './Searchbar'
 import {useState, useEffect} from 'react';
+import { Link } from "react-router-dom"
 
 export default function Etusivu() {
 
@@ -21,7 +22,7 @@ useEffect(async() => {
             <div className='ravintolaContainer'>
             {ravintola.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
                 <div className='ravintolaContainer'>
-
+                <button className="naviNappi"><Link className="naviNimi" to="/Tuotesivu"/>Tuotteet</button>
                 <div className='Items'>
                 <img className="ravintolaKuva"src={kuva} alt={nimi} />
                 <div className = "Tiedot">
@@ -31,6 +32,7 @@ useEffect(async() => {
                   <p>{tyyppi}</p>
                   <p>{hintataso}</p>
                   <p>{arviointi}</p>
+                
                 </div>
                 </div>
                 </div>

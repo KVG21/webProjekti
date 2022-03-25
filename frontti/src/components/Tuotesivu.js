@@ -10,8 +10,8 @@ export default function Tuotesivu() {
 
   const [summa,setSumma] = useState(0);
 
-  useEffect(async() =>{ //fetch items from backend api
-    const result = await fetch('http://localhost:3001/tuote/2').then((res)=>
+  useEffect(async(idRavintola) =>{ //fetch items from backend api
+    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
       res.json()
     )
     setTuotteet(result)

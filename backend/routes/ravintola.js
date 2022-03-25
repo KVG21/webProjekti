@@ -11,7 +11,8 @@ router.get('/:id?', function (req, res) {
                 res.json(dbResult);
             }
         });
-    } else {
+    } 
+    else {
         ravintola.getAll(function (err, dbResult){
             if(err) {
                 res.json(err);
@@ -21,6 +22,7 @@ router.get('/:id?', function (req, res) {
         });
     }
 });
+
 
 router.post('/',
 function(req, res){

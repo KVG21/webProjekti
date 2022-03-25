@@ -1,9 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import './Ravintoloitsija.css'
 
 
 export default function Ravintoloitsija() {
+
+    const [ravintola, setRavintola] = useState([])
+
+    useEffect(async () => {
+        const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
+        res.json()
+        )
+        setRavintola(result)
+        console.log(result)
+    }, [])
+
+    const poistaRavintola = (item) => {
+        let uudetRaflat = [...ravintola];
+        let poistettuRafla = uudetRaflat.find(p => p.id === item.id);
+        let poistettuRaflaIndeksi = uudetRaflat.findIndex(p => p.id === item.id);
+        fetch(`http://localhost:3001/ravintola/${poistettuRafla.id}`, { method: 'DELETE'})
+        uudetRaflat.splice(poistettuRaflaIndeksi, 1);
+        setRavintola(uudetRaflat);
+    }
+
+
     const uusiRavintola = (item) => {
         fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
@@ -19,6 +40,7 @@ export default function Ravintoloitsija() {
         })})
     }
 
+
     const uusiTuote = (item) => {
         fetch(`http://localhost:3001/tuote`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
@@ -31,6 +53,7 @@ export default function Ravintoloitsija() {
         })})
     }
 
+ 
     const [nimi, setNimi] = useState("")
     const [osoite, setOsoite] = useState("")
     const [aukiolo, setAukiolo] = useState("")
@@ -67,8 +90,13 @@ export default function Ravintoloitsija() {
         
                         <button className="saveNappi"onClick={()=>uusiRavintola({
                             nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi,asiakasID
-                        })}>Tallenna</button>
-                        
+                        })}>Tallenna</button>¨
+
+                        <h2>Poista rafla</h2>
+                        <div>
+                            {ravintola.map(p => <div> {p.nimi}<button className="saveNappi" onClick={() => poistaRavintola(p)}>POISTA</button></div>)}
+                        </div>
+
             </div>
 
             <div className="tuoteCont">

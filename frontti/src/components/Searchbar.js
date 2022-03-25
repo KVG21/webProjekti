@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom"
 
 
 export default function Searchbar() {
@@ -26,6 +27,9 @@ useEffect(async() => {
               ))}
      <div className="searchBarItems">Hae ravintolaa <input type="search" id= "search"/></div>
         <button className="itemButtons" onClick>Etsi</button>
+                <nav>
+                <button className="naviNappi"><Link className="naviNimi" to="/Ravintoloitsija">Ravintoloitsija</Link></button>   
+                </nav>
     
     </div>
     </div>

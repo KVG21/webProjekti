@@ -87,11 +87,30 @@ export default function Ravintoloitsija() {
     const [arviointi, setArviointi] = useState("")
     const [asiakasID, setAsiakasID] = useState("")
 
+    const tyhjennaRavintola = () => {
+        setNimi("")
+        setOsoite("")
+        setAukiolo("")
+        setKuva("")
+        setTyyppi("")
+        setHintataso("")
+        setArviointi("")
+        setAsiakasID("")
+    }
+
     const [tuotenimi, setTuotenimi] = useState("")
     const [kuvaus, setKuvaus] = useState("")
     const [hinta, setHinta] = useState("")
     const [tuotekuva, setTuotekuva] = useState("")
     const [ravintolaID, setRavintolaID] = useState("")
+
+    const tyhjennaTuote = () => {
+        setTuotenimi("")
+        setKuvaus("")
+        setHinta("")
+        setTuotekuva("")
+        setRavintolaID("")
+    }
     
   return (
         <div>
@@ -112,9 +131,14 @@ export default function Ravintoloitsija() {
                     <div className="inputDesc"> Arviointi <input value={arviointi} onChange={(event) => setArviointi(event.currentTarget.value)} type="text"/></div>
                     <div className="inputDesc"> Ravintoloitsija ID <input value={asiakasID} onChange={(event) => setAsiakasID(event.currentTarget.value)} type="text"/></div>
         
-                        <button className="saveNappi"onClick={()=>uusiRavintola({
+                        <button className="saveNappi"onClick={()=>{
+                            uusiRavintola({
                             nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi,asiakasID
-                        })}>Tallenna</button>
+                        })
+                            tyhjennaRavintola();
+                            alert("Ravintola lisätty onnistuneesti!");
+                            window.location.reload();
+                        }}>Tallenna</button>
 
                         <h2 className="luonti">Poista rafla</h2>
                         <div>
@@ -136,9 +160,14 @@ export default function Ravintoloitsija() {
                         <div className="inputDesc"> Kuva URL <input value={tuotekuva} onChange={(event) => setTuotekuva(event.target.value)} type="text"/></div>
                         <div className="inputDesc"> Ravintola ID <input value={ravintolaID} onChange={(event) => setRavintolaID(event.currentTarget.value)} type="text"/></div>
 
-                            <button className="saveNappi" onClick={()=>uusiTuote({
+                            <button className="saveNappi" onClick={()=>
+                            {uusiTuote({
                                 tuotenimi,kuvaus,hinta,tuotekuva,ravintolaID
-                            })}>Tallenna</button>
+                            })
+                            tyhjennaTuote();
+                            alert("Tuote lisätty onnistuneesti!");
+                            window.location.reload();
+                            }}>Tallenna</button>
 
                             <h2 className="luonti">Poista tuote</h2>
                         <div>

@@ -136,8 +136,7 @@ export default function Ravintoloitsija() {
                             nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi,asiakasID
                         })
                             tyhjennaRavintola();
-                            alert("Ravintola lisätty onnistuneesti!");
-                            window.location.reload();
+
                         }}>Tallenna</button>
 
                         <h2 className="luonti">Poista rafla</h2>

@@ -13,7 +13,7 @@ export default function Tuotesivu() {
 
   const [summa,setSumma] = useState(0);
 
-  useEffect(async(idRavintola) =>{ //fetch items from backend api
+  useEffect(async() =>{ //fetch items from backend api
     const result = await fetch(`http://localhost:3001/tuote/1`).then((res)=>
       res.json()
     )
@@ -58,6 +58,7 @@ export default function Tuotesivu() {
     } 
   
   const OstaTuotteet = () => {
+    console.log("moro")
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     let LahtevatNimet = "";
@@ -65,27 +66,25 @@ export default function Tuotesivu() {
 
       for(let i = 0; i < Ostoskori.length; i++) {
           let addition = {...Ostoskori[i]}       
-          LahtevatNimet = LahtevatNimet + " " +addition.nimi
+          LahtevatNimet = LahtevatNimet + ", " +addition.nimi + " kpl: " + addition.kpl;
           maara += addition.kpl
       }
     
       fetch(`http://localhost:3001/historia`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
+        osoite : "peltoa",
         pvm: date,
         tuotteet: LahtevatNimet,
         summa: summa,
-        maara: maara,
         asiakasID: 1
         })})
   }
 
   return (
     <div>
-      <div className="Otsake">
-        <div className="inputDesc"> Osoite <br></br> <input value={Osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/>   
-      </div>
-        <button className="saveNappi"onClick={()=> setOsoite(Osoite)}> Tallenna Osoite</button>
+      <div className="Otsake"></div>
+      <div>
         <button className="naviNappi"><Link className="naviNimi" to="/">Etusivu</Link></button>
     </div>
 
@@ -94,7 +93,7 @@ export default function Tuotesivu() {
               <div className="Otsikko">Tuotteet</div>
                 {Tuotteet.map(({idTuote, nimi, kategoria, kuvaus,hinta,kuva }) => (
                     <div className="tuotteet"> 
-                    <img className="ravintolaKuva"src={kuva} alt={nimi} />
+                    <img className="tuoteKuva"src={kuva} alt={nimi} />
                     <p>{nimi}</p>
                     <p>{kategoria}</p>
                     <p>{kuvaus}</p> 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Searchbar from './Searchbar'
+import searchBar from './Searchbar.js'
 import {useState, useEffect} from 'react';
 
 export default function Etusivu() {
@@ -17,7 +17,12 @@ useEffect(async() => {
 
   return (
     <div className = "etusivu">
+<<<<<<< Updated upstream
            <Searchbar/>
+=======
+           <searchBar/>
+           
+>>>>>>> Stashed changes
             <div className='ravintolaContainer'>
             {ravintola.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
                 <div className='ravintolaContainer'>

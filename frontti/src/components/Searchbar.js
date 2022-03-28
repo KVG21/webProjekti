@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 
 function myFunction() {
@@ -17,9 +18,14 @@ function myFunction() {
     }
   }
 }
+=======
+import React from 'react'
+import {useState, useEffect} from 'react';
+import { Link } from "react-router-dom"
+>>>>>>> Stashed changes
 
-export default function Searchbar() {
 
+<<<<<<< Updated upstream
   return (  
   <div className='name'>
     <h1>Kvg Rafla</h1>
@@ -37,3 +43,32 @@ export default function Searchbar() {
     </div>
   );
 }
+=======
+const SearchBar = ({ searchQuery, setSearchQuery }) => (
+  <form action="/" method="get"><div className='name'>
+  <h1>Kvg Rafla</h1>
+<div className="searchBarContainer">
+    <label htmlFor="header-search">
+        <span className="visually-hidden">Etsi ravintolaa</span>
+    </label>
+    <nav><button className="naviNappi"><Link className="naviNimi" to="/Ravintoloitsija">Ravintoloitsija</Link></button></nav>
+ 
+      <label htmlFor="header-search">
+          <span className="visually-hidden">Etsi ravintolaa</span>
+      </label>
+         </div>
+         </div>
+      <input
+       value={searchQuery}
+       onInput={e => setSearchQuery(e.target.value)}
+          type="text"
+          id="header-search"
+          placeholder="Etsi ravintolaa"
+          name="s" 
+      />
+      <button type="submit">Search</button>
+  </form>
+);
+
+export default SearchBar;
+>>>>>>> Stashed changes

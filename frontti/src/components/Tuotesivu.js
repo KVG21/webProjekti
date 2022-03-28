@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './Tuotesivu.css'
 
 export default function Tuotesivu() {
@@ -8,10 +9,12 @@ export default function Tuotesivu() {
 
   const [Ostoskori,setOstoskori] = useState([])
 
+  const [Osoite,setOsoite] = useState([])
+
   const [summa,setSumma] = useState(0);
 
   useEffect(async(idRavintola) =>{ //fetch items from backend api
-    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
+    const result = await fetch(`http://localhost:3001/tuote/1`).then((res)=>
       res.json()
     )
     setTuotteet(result)
@@ -54,17 +57,46 @@ export default function Tuotesivu() {
       setSumma(summa-Substraction.hinta)
     } 
   
+  const OstaTuotteet = () => {
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    let LahtevatNimet = "";
+    let maara = 0;
+
+      for(let i = 0; i < Ostoskori.length; i++) {
+          let addition = {...Ostoskori[i]}       
+          LahtevatNimet = LahtevatNimet + " " +addition.nimi
+          maara += addition.kpl
+      }
+    
+      fetch(`http://localhost:3001/historia`,{ method: 'POST',
+        headers:{'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+        pvm: date,
+        tuotteet: LahtevatNimet,
+        summa: summa,
+        maara: maara,
+        asiakasID: 1
+        })})
+  }
 
   return (
     <div>
-      <div className="name"></div>
+      <div className="Otsake">
+        <div className="inputDesc"> Osoite <br></br> <input value={Osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/>   
+      </div>
+        <button className="saveNappi"onClick={()=> setOsoite(Osoite)}> Tallenna Osoite</button>
+        <button className="naviNappi"><Link className="naviNimi" to="/">Etusivu</Link></button>
+    </div>
+
       <div className="tuoteMainContainer">
             <div className="tuoteKontti">
               <div className="Otsikko">Tuotteet</div>
-                {Tuotteet.map(({idTuote, nimi, kuvaus,hinta,kuva }) => (
+                {Tuotteet.map(({idTuote, nimi, kategoria, kuvaus,hinta,kuva }) => (
                     <div className="tuotteet"> 
-                    <img src = {kuva}/>
-                    <p>{nimi}</p> 
+                    <img className="ravintolaKuva"src={kuva} alt={nimi} />
+                    <p>{nimi}</p>
+                    <p>{kategoria}</p>
                     <p>{kuvaus}</p> 
                     <p>{hinta} $</p>
                     <button className="Napit" onClick={ ()=> LisaaKoriin(idTuote,nimi,hinta) }>+</button>                 
@@ -86,8 +118,9 @@ export default function Tuotesivu() {
               
                 <div className="yhteenVeto">
                   <p>{summa} $</p>
-                  <button className="Napit">Osta</button>
-                </div>          
+                  <button className="Napit" onClick={ ()=> OstaTuotteet()}>Osta</button>
+                </div>
+                        
               </div>
             </div>
           </div>

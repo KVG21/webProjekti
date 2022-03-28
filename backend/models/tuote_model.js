@@ -16,7 +16,7 @@ const tuote = {
     },
     update: function(idTuote, tuote, callback){
         return db.query(
-            'update tuote set kategoria=? nimi=?, kuvaus=?, hinta=?, kuva=? where idTuote=?',
+            'update tuote set kategoria=?, nimi=?, kuvaus=?, hinta=?, kuva=? where idTuote=?',
             [tuote.kategoria, tuote.nimi, tuote.kuvaus, tuote.hinta, tuote.kuva, idTuote], callback);
     }
 };

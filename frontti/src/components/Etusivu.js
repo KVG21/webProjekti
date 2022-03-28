@@ -1,6 +1,7 @@
 import React from 'react'
 import Searchbar from './Searchbar'
 import {useState, useEffect} from 'react';
+import { Link } from "react-router-dom"
 
 
 export default function Etusivu() {
@@ -35,6 +36,7 @@ useEffect(async() => {
                   <p>{arviointi}</p>
                 
                 </div>
+                <button className="naviNappi"><Link className="naviNimi" to="/Tuotesivu">Tuotteet</Link></button> 
                 </div>
                 </div>
               ))}

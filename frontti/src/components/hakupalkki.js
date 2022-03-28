@@ -1,5 +1,5 @@
 const hakutulos = document.getElementById('hakutulos');
-const searchbar = document.getElementById('Searchbar');
+const searchbar = document.getElementById('searchbar');
 let tulos = [];
 
 searchbar.addEventListener('keyup', (e) => {
@@ -27,7 +27,7 @@ const displayhakuehto = (hakuehdot) => {
       .map((hakuehto) => {
           return `
           <li class="hakuehto">
-              <h2>${hakuehto.name}</h2>
+              <h2>${hakuehto.nimi}</h2>
           </li>
       `;
       })

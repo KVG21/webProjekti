@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './Tuotesivu.js'
 
 const Kuitti = () => {
-    const [kuitti, setkuitti] = useState[()]
+    const [kuitti, setkuitti] = useState([])
 
     useEffect(async() => {
         const result = await fetch('http://localhost:3001/historia').then((res)=>

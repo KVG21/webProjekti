@@ -5,38 +5,27 @@ import './Ravintoloitsija.css'
 
 export default function Ravintoloitsija() {
 
-    const [ravintola, setRavintola] = useState([])
+    const [ravintolat, setRavintolat] = useState([])
+    const [tuotteet, setTuotteet] = useState([])
 
     useEffect(async () => {
         const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
         res.json()
         )
-        setRavintola(result)
-        console.log(result)
+        setRavintolat(result)
     }, [])
 
-    const poistaRavintola = (idRavintola) => {
-        fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'DELETE'})
-        console.log(idRavintola)
+    const poistaRavintola = async (idRavintola) => {
+        let uudetRaflat = [...ravintolat];
+        let poistettu = uudetRaflat.findIndex(p => p.id === idRavintola);
+        await fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'DELETE'})
+        uudetRaflat.splice(poistettu, 1);
+        setRavintolat(uudetRaflat);
     }
 
-    /* const muokkaaRavintola = (item, idRavintola) => {
-        fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'PUT',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({
-            nimi: item.nimi,
-            osoite: item.osoite,
-            aukiolo: item.aukiolo,
-            kuva: item.kuva,
-            tyyppi: item.tyyppi,
-            hintataso: item.hintataso,
-            arviointi: item.arviointi,
-            asiakasID: item.asiakasID,
-        })})
-    }   */
     
-    const uusiRavintola = (item) => {
-        fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
+    const uusiRavintola = async (item) => {
+        await fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
         nimi: item.nimi,
@@ -48,25 +37,31 @@ export default function Ravintoloitsija() {
         arviointi: item.arviointi,
         asiakasID: item.asiakasID,  
         })})
-    }
-
-    const [tuote, setTuote] = useState([])
-
-    useEffect(async () => {
-        const result = await fetch(`http://localhost:3001/tuote`).then((res) => 
+        const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
         res.json()
         )
-        setTuote(result)
-        console.log(result)
-    }, [])
-
-    const poistaTuote = (idTuote) => {
-        fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'})
-        console.log(idTuote)
+        setRavintolat(result)
     }
 
-    const uusiTuote = (item) => {
-        fetch(`http://localhost:3001/tuote`,{ method: 'POST',
+
+    useEffect(async () => {
+        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => 
+        res.json()
+        )
+        setTuotteet(resultTuote)
+        console.log(resultTuote)
+    }, [])
+
+    const poistaTuote = async(idTuote) => {
+        let uudetTuotteet = [...tuotteet];
+        let poistettuTuote = uudetTuotteet.findIndex(p => p.id === idTuote);
+        await fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'})
+        uudetTuotteet.splice(poistettuTuote, 1);
+        setTuotteet(uudetTuotteet);
+    }
+
+    const uusiTuote = async(item) => {
+        await fetch(`http://localhost:3001/tuote`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
         kategoria: item.kategoria,
@@ -76,6 +71,10 @@ export default function Ravintoloitsija() {
         kuva: item.tuotekuva,
         ravintolaID: item.ravintolaID,    
         })})
+        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => 
+        res.json()
+        )
+        setTuotteet(resultTuote)
     }
 
 
@@ -106,6 +105,7 @@ export default function Ravintoloitsija() {
     const [ravintolaID, setRavintolaID] = useState("")
 
     const tyhjennaTuote = () => {
+        setKategoria("")
         setTuotenimi("")
         setKuvaus("")
         setHinta("")
@@ -162,13 +162,12 @@ export default function Ravintoloitsija() {
 
                         <h2 className="luonti">Poista rafla</h2>
                         <div>
-                            {ravintola.map(({idRavintola,nimi}) =>(
+                            {ravintolat.map(({idRavintola,nimi}) =>(
                                 <div className="poistaCont">
                                     <p>{nimi}</p>
                                     <button className="poistoNappi" onClick={ ()=>{
                                         poistaRavintola(idRavintola)
-                                        alert("Poistettu")
-                                        window.location.reload();
+
                                     }}>Poista</button>
                                     </div>
                             ))}
@@ -178,7 +177,7 @@ export default function Ravintoloitsija() {
 
             <div className="tuoteCont">
                 <h2 className="luonti">Lisää tuote</h2>
-                        <div className="inputDesc">Kategoria <input value={kategoria} onChange={(event) => setKategoria(event.currentTarget.value)} type="text"/></div>
+                        <div className="inputDesc"> Kategoria <input value={kategoria} onChange={(event) => setKategoria(event.currentTarget.value)} type="text"/></div>
                         <div className="inputDesc"> Nimi <br></br><input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
                         <div className="inputDesc"> Kuvaus <input value={kuvaus} onChange={(event) => setKuvaus(event.currentTarget.value)} type="text"/></div>
                         <div className="inputDesc"> Hinta <input value={hinta} onChange={(event) => setHinta(event.currentTarget.value)} type="text"/></div>
@@ -194,13 +193,11 @@ export default function Ravintoloitsija() {
 
                             <h2 className="luonti">Poista tuote</h2>
                         <div>
-                            {tuote.map(({idTuote,nimi}) =>(
+                            {tuotteet.map(({idTuote,nimi}) =>(
                                 <div className="poistaCont">
                                     <p>{nimi}</p>
                                     <button className="poistoNappi" onClick={ ()=>{
                                         poistaTuote(idTuote)
-                                        alert("Poistettu")
-                                        window.location.reload();
                                     }}>Poista</button>
                                     </div>
                             ))}

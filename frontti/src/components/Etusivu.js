@@ -1,46 +1,67 @@
 import React from 'react'
-import Searchbar from './Searchbar'
 import {useState, useEffect} from 'react';
+import Search from './Searchbar';
+import './Etusivu.css'
 import { Link } from "react-router-dom"
 
 
 export default function Etusivu() {
 
+  const [ravintola, setravintola] = useState([])
 
-const [ravintola, setravintola] = useState([])
+//url parametriä käyttäen filtteri
+const { search } = window.location;
+const query = new URLSearchParams(search).get('s');
+const [searchQuery, setSearchQuery] = useState(query || '');
+const filteredravintola = filterravintola(ravintola, searchQuery);
 
 useEffect(async() => {
   const result = await fetch('http://localhost:3001/ravintola').then((res)=>
   res.json()
   )
   setravintola(result)
-  console.log(result)
+  
 }, [])
 
+
+//the action
   return (
-    <div className = "etusivu">
-           <searchBar/>
-           
-            <div className='ravintolaContainer'>
-            {ravintola.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
-                <div className='ravintolaContainer'>
-              
-                <div className='Items'>
-                <img className="ravintolaKuva"src={kuva} alt={nimi} />
-                <div className = "Tiedot">
-                  <p>{nimi}</p>
-                  <p>{osoite}</p>
-                  <p>{aukiolo}</p>
-                  <p>{tyyppi}</p>
-                  <p>{hintataso}</p>
-                  <p>{arviointi}</p>
-                
-                </div>
-                <button className="naviNappi"><Link className="naviNimi" to="/Tuotesivu">Tuotteet</Link></button> 
-                </div>
-                </div>
-              ))}
-        </div>
-        </div>
-  )
+  <div>        
+    <Search
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+    />
+    <div className="ravintolaContainer">
+        {filteredravintola.map(ravintola => (
+           <Link to={ "/Tuotesivu/"+String(ravintola.idRavintola) }> 
+           <div className='Items'>
+             <img className="ravintolaKuva"src={ravintola.kuva} alt={ravintola.nimi} />
+               <div className = "Tiedot">
+                 <p>{ravintola.nimi}</p>
+                 <p>{ravintola.osoite}</p>
+                 <p>{ravintola.aukiolo}</p>
+                 <p>{ravintola.tyyppi}</p>
+                 <p>{ravintola.hintataso}</p>
+                 <p>{ravintola.arviointi}</p>
+               </div>                     
+             </div>     
+            </Link>
+        ))}         
+    </div>
+  </div>
+  );
 }
+
+
+//antaako ravintolan vai ei? Blank = ei oo tietokannassa jne
+
+const filterravintola = (ravintola, query) => {
+  if (!query) {
+      return ravintola;
+  }
+
+  return ravintola.filter((ravintola) => {
+      const postName = ravintola.nimi.toLowerCase();
+      return postName.includes(query);
+  });
+};

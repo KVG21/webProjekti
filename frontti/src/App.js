@@ -13,7 +13,7 @@ export default function App() {
             <Etusivu/>
             <nav>
                 <button className="naviNappi"><Link className="naviNimi" to="/Ravintoloitsija">Ravintoloitsija</Link></button>
-                <button className="naviNappi"><Link className="naviNimi" to="/Kirjautuminen">Kirjautuminen</Link></button>
+                <button className="naviNappi"><Link className="naviNimi" to="/KirjautuminenSivu">Kirjautuminen</Link></button>
                 <button className="naviNappi"><Link className="naviNimi" to="/Rekisteroityminen">Rekisteroityminen</Link></button> 
             </nav>
         </div>

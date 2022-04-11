@@ -29,7 +29,7 @@ export default function Rekisteroityminen(){
          <div>
            <div className='etunimi'>
            <nav className='navigointi'>
-             <button classname="naviNappi"><Link className='naviNappi' to="/">Etusivu</Link></button>
+             <button classname="naviNappi"><Link className='naviNappi' to="/Etusivu">Etusivu</Link></button>
            </nav>
            </div>
            <div className="kayttajaCont">

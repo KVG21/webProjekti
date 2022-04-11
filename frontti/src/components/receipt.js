@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './Tuotesivu.js'
 import './receipt.css'
 
-const Receipt = () => {
+export default function Receipt() {
     const [receipt, setreceipt] = useState([])
 
     useEffect(async() => {
@@ -17,6 +17,7 @@ const Receipt = () => {
 
     return (
         <div className='receiptContainer'>
+            <button classname="naviNappi"><Link className='naviNappi' to="/Etusivu">Etusivu</Link></button>
         <div className='tilaushistoria'></div>
         {receipt.map(({osoite, pvm, tuotteet,summa, asiakasID}) => (
                     <div className="clients_receipt">

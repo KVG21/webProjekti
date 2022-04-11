@@ -1,47 +1,67 @@
 import React from 'react'
-import Searchbar from './Searchbar'
 import {useState, useEffect} from 'react';
+import Search from './Searchbar';
+import './Etusivu.css'
 import { Link } from "react-router-dom"
 
 
 export default function Etusivu() {
 
+  const [restaurant, setrestaurant] = useState([])
 
-const [restaurant, setrestaurant] = useState([])
+//url parametriä käyttäen filtteri
+const { search } = window.location;
+const query = new URLSearchParams(search).get('s');
+const [searchQuery, setSearchQuery] = useState(query || '');
+const filteredrestaurant = filterrestaurant(restaurant, searchQuery);
 
 useEffect(async() => {
   const result = await fetch('http://localhost:3001/ravintola').then((res)=>
   res.json()
   )
   setrestaurant(result)
-  console.log(result)
+  
 }, [])
 
+
+//the action
   return (
-    <div className = "etusivu">
-           <searchBar/>
-           
-            <div className='ravintolaContainer'>
-            {restaurant.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
-                <div className='ravintolaContainer'>
-              
-                <div className='Items'>
-                <img className="ravintolaKuva"src={kuva} alt={nimi} />
-                <div className = "Tiedot">
-                  <p>{nimi}</p>
-                  <p>{osoite}</p>
-                  <p>{aukiolo}</p>
-                  <p>{tyyppi}</p>
-                  <p>{hintataso}</p>
-                  <p>{arviointi}</p>
-                
-                </div>
-                <button className="naviNappi"><Link className="naviNimi" to="/KirjautuminenSivu">Kirjautuminen</Link></button> 
-                <button className="naviNappi"><Link className="naviNimi" to="/Tuotesivu">Tuotteet</Link></button> 
-                </div>
-                </div>
-              ))}
-        </div>
-        </div>
-  )
+  <div>        
+    <Search
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+    />
+    <div className="ravintolaContainer">
+        {filteredrestaurant.map(restaurant => (
+           <Link to={ "/Tuotesivu/"+String(restaurant.idRavintola) }> 
+           <div className='Items'>
+             <img className="ravintolaKuva"src={restaurant.kuva} alt={restaurant.nimi} />
+               <div className = "Tiedot">
+                 <p>{restaurant.nimi}</p>
+                 <p>{restaurant.osoite}</p>
+                 <p>{restaurant.aukiolo}</p>
+                 <p>{restaurant.tyyppi}</p>
+                 <p>{restaurant.hintataso}</p>
+                 <p>{restaurant.arviointi}</p>
+               </div>                     
+             </div>     
+            </Link>
+        ))}         
+    </div>
+  </div>
+  );
 }
+
+
+//antaako restaurantn vai ei? Blank = ei oo tietokannassa jne
+
+const filterrestaurant = (restaurant, query) => {
+  if (!query) {
+      return restaurant;
+  }
+
+  return restaurant.filter((restaurant) => {
+      const postName = restaurant.nimi.toLowerCase();
+      return postName.includes(query);
+  });
+};

@@ -3,6 +3,7 @@
     flex-direction: column;
     float: left;
     margin-left:500px;
+    width: 20%;
 }
 
 .tuoteCont{
@@ -66,4 +67,7 @@ input{
 }
 .dropdown{
     margin-left:50px;
+}
+.ownedRestauramts{
+    float: right;
 }

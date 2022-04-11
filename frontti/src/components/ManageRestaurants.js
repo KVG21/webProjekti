@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import './Ravintoloitsija.css'
+import './styles/manageRestaurants.css'
 
 
-export default function Ravintoloitsija() {
+export default function ManageRestaurants() {
 
     const [ravintolat, setRavintolat] = useState([])
-    const [tuotteet, setTuotteet] = useState([])
 
     useEffect(async () => {
         const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
@@ -43,41 +42,6 @@ export default function Ravintoloitsija() {
         setRavintolat(result)
     }
 
-
-    useEffect(async () => {
-        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => 
-        res.json()
-        )
-        setTuotteet(resultTuote)
-        console.log(resultTuote)
-    }, [])
-
-    const poistaTuote = async(idTuote) => {
-        let uudetTuotteet = [...tuotteet];
-        let poistettuTuote = uudetTuotteet.findIndex(p => p.id === idTuote);
-        await fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'})
-        uudetTuotteet.splice(poistettuTuote, 1);
-        setTuotteet(uudetTuotteet);
-    }
-
-    const uusiTuote = async(item) => {
-        await fetch(`http://localhost:3001/tuote`,{ method: 'POST',
-        headers:{'Content-Type' : 'application/json'},
-        body: JSON.stringify({
-        kategoria: item.kategoria,
-        nimi: item.tuotenimi,
-        kuvaus: item.kuvaus,
-        hinta: item.hinta,
-        kuva: item.tuotekuva,
-        ravintolaID: item.ravintolaID,    
-        })})
-        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => 
-        res.json()
-        )
-        setTuotteet(resultTuote)
-    }
-
-
     const [nimi, setNimi] = useState("")
     const [osoite, setOsoite] = useState("")
     const [aukiolo, setAukiolo] = useState("")
@@ -97,21 +61,7 @@ export default function Ravintoloitsija() {
         setArviointi("")
         setAsiakasID("")
     }
-    const [kategoria, setKategoria] = useState("")
-    const [tuotenimi, setTuotenimi] = useState("")
-    const [kuvaus, setKuvaus] = useState("")
-    const [hinta, setHinta] = useState("")
-    const [tuotekuva, setTuotekuva] = useState("")
-    const [ravintolaID, setRavintolaID] = useState("")
 
-    const tyhjennaTuote = () => {
-        setKategoria("")
-        setTuotenimi("")
-        setKuvaus("")
-        setHinta("")
-        setTuotekuva("")
-        setRavintolaID("")
-    }
 
     
   return (
@@ -159,8 +109,8 @@ export default function Ravintoloitsija() {
                             tyhjennaRavintola();
 
                         }}>Tallenna</button>
-
-                        <h2 className="luonti">Poista rafla</h2>
+                    
+                        <h2 className="luonti">Poista ravintola</h2>
                         <div>
                             {ravintolat.map(({idRavintola,nimi}) =>(
                                 <div className="poistaCont">
@@ -172,39 +122,17 @@ export default function Ravintoloitsija() {
                                     </div>
                             ))}
                         </div>
-
+                        
             </div>
+                                    <div className="tuoteCont">
+                                        <h2 className="luonti">Ravintolasi</h2>
+                                        {ravintolat.map(({idRavintola, nimi}) =>(
+                                            <><p>{nimi}</p><nav className="navigointi">
+                                                <Link className="naviNimi" to={"/Tuotehallinta/"+String(idRavintola)}> <button className="naviNappi">Hallitse tuotteita</button></Link>
+                                            </nav></> 
+                                        ))}
 
-            <div className="tuoteCont">
-                <h2 className="luonti">Lisää tuote</h2>
-                        <div className="inputDesc"> Kategoria <input value={kategoria} onChange={(event) => setKategoria(event.currentTarget.value)} type="text"/></div>
-                        <div className="inputDesc"> Nimi <br></br><input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
-                        <div className="inputDesc"> Kuvaus <input value={kuvaus} onChange={(event) => setKuvaus(event.currentTarget.value)} type="text"/></div>
-                        <div className="inputDesc"> Hinta <input value={hinta} onChange={(event) => setHinta(event.currentTarget.value)} type="text"/></div>
-                        <div className="inputDesc"> Kuva URL <input value={tuotekuva} onChange={(event) => setTuotekuva(event.target.value)} type="text"/></div>
-                        <div className="inputDesc"> Ravintola ID <input value={ravintolaID} onChange={(event) => setRavintolaID(event.currentTarget.value)} type="text"/></div>
-
-                            <button className="saveNappi" onClick={()=>{
-                                uusiTuote({
-                                tuotenimi,kuvaus,hinta,tuotekuva,ravintolaID
-                            })
-                            tyhjennaTuote();                            
-                            }}>Tallenna</button>
-
-                            <h2 className="luonti">Poista tuote</h2>
-                        <div>
-                            {tuotteet.map(({idTuote,nimi}) =>(
-                                <div className="poistaCont">
-                                    <p>{nimi}</p>
-                                    <button className="poistoNappi" onClick={ ()=>{
-                                        poistaTuote(idTuote)
-                                    }}>Poista</button>
-                                    </div>
-                            ))}
-                        </div>
-
-            </div>   
-
+                                    </div>    
         </div>
         
 

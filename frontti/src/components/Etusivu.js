@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react';
 import Search from './Searchbar';
-import './Etusivu.css'
+import './styles/Etusivu.css'
 import { Link } from "react-router-dom"
 
 

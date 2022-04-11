@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Kirjautuminen.css'
+import './styles/Kirjautuminen.css'
 import { Link } from "react-router-dom";
 import { Router } from 'express';
 import { render } from 'express/lib/response';

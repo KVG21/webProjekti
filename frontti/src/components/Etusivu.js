@@ -7,19 +7,19 @@ import { Link } from "react-router-dom"
 
 export default function Etusivu() {
 
-  const [ravintola, setravintola] = useState([])
+  const [restaurant, setrestaurant] = useState([])
 
 //url parametriä käyttäen filtteri
 const { search } = window.location;
 const query = new URLSearchParams(search).get('s');
 const [searchQuery, setSearchQuery] = useState(query || '');
-const filteredravintola = filterravintola(ravintola, searchQuery);
+const filteredrestaurant = filterrestaurant(restaurant, searchQuery);
 
 useEffect(async() => {
   const result = await fetch('http://localhost:3001/ravintola').then((res)=>
   res.json()
   )
-  setravintola(result)
+  setrestaurant(result)
   
 }, [])
 
@@ -32,17 +32,17 @@ useEffect(async() => {
         setSearchQuery={setSearchQuery}
     />
     <div className="ravintolaContainer">
-        {filteredravintola.map(ravintola => (
-           <Link to={ "/Tuotesivu/"+String(ravintola.idRavintola) }> 
+        {filteredrestaurant.map(restaurant => (
+           <Link to={ "/Tuotesivu/"+String(restaurant.idRavintola) }> 
            <div className='Items'>
-             <img className="ravintolaKuva"src={ravintola.kuva} alt={ravintola.nimi} />
+             <img className="ravintolaKuva"src={restaurant.kuva} alt={restaurant.nimi} />
                <div className = "Tiedot">
-                 <p>{ravintola.nimi}</p>
-                 <p>{ravintola.osoite}</p>
-                 <p>{ravintola.aukiolo}</p>
-                 <p>{ravintola.tyyppi}</p>
-                 <p>{ravintola.hintataso}</p>
-                 <p>{ravintola.arviointi}</p>
+                 <p>{restaurant.nimi}</p>
+                 <p>{restaurant.osoite}</p>
+                 <p>{restaurant.aukiolo}</p>
+                 <p>{restaurant.tyyppi}</p>
+                 <p>{restaurant.hintataso}</p>
+                 <p>{restaurant.arviointi}</p>
                </div>                     
              </div>     
             </Link>
@@ -53,15 +53,15 @@ useEffect(async() => {
 }
 
 
-//antaako ravintolan vai ei? Blank = ei oo tietokannassa jne
+//antaako restaurantn vai ei? Blank = ei oo tietokannassa jne
 
-const filterravintola = (ravintola, query) => {
+const filterrestaurant = (restaurant, query) => {
   if (!query) {
-      return ravintola;
+      return restaurant;
   }
 
-  return ravintola.filter((ravintola) => {
-      const postName = ravintola.nimi.toLowerCase();
+  return restaurant.filter((restaurant) => {
+      const postName = restaurant.nimi.toLowerCase();
       return postName.includes(query);
   });
 };

@@ -7,13 +7,13 @@ import { Link } from "react-router-dom"
 export default function Etusivu() {
 
 
-const [ravintola, setravintola] = useState([])
+const [restaurant, setrestaurant] = useState([])
 
 useEffect(async() => {
   const result = await fetch('http://localhost:3001/ravintola').then((res)=>
   res.json()
   )
-  setravintola(result)
+  setrestaurant(result)
   console.log(result)
 }, [])
 
@@ -22,7 +22,7 @@ useEffect(async() => {
            <searchBar/>
            
             <div className='ravintolaContainer'>
-            {ravintola.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
+            {restaurant.map(({nimi, osoite, aukiolo, kuva, tyyppi, hintataso, arviointi}) => (
                 <div className='ravintolaContainer'>
               
                 <div className='Items'>

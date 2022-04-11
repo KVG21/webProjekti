@@ -118,7 +118,7 @@ export default function Ravintoloitsija() {
         <div>
             <div className="name">
             <nav className="navigointi">
-            <button className="naviNappi"><Link className="naviNimi" to="/">Etusivu</Link></button>
+           <Link className="naviNimi" to="/Etusivu"> <button className="naviNappi">Etusivu</button></Link>
             </nav> 
             </div>
             <div className="ravintolaCont">

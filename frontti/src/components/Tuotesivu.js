@@ -74,16 +74,20 @@ export default function Tuotesivu() {
           LahtevatNimet = LahtevatNimet + ", " +addition.nimi + " kpl: " + addition.kpl + "    ";
           maara += addition.kpl
       }
-    
-      fetch(`http://localhost:3001/historia`,{ method: 'POST',
-        headers:{'Content-Type' : 'application/json'},
-        body: JSON.stringify({
-        osoite : osoite,
-        pvm: date,
-        tuotteet: LahtevatNimet,
-        summa: summa,
-        asiakasID: 1
-        })})
+    if(LahtevatNimet.length === 0 || osoite.length === 0) {
+        return alert("Please Add addres or items to list")
+      } else {
+        fetch(`http://localhost:3001/historia`,{ method: 'POST',
+          headers:{'Content-Type' : 'application/json'},
+          body: JSON.stringify({
+          osoite : osoite,
+          pvm: date,
+          tuotteet: LahtevatNimet,
+          summa: summa,
+          asiakasID: 1
+          })})
+          return alert("Success :)")
+      }
   }
 
   return (

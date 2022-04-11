@@ -33,7 +33,7 @@ export default function Rekisteroityminen(){
            </nav>
            </div>
            <div className="kayttajaCont">
-             <h2 className='rekisteroityminen'>Rekisteröidy</h2>
+             <h2 className='Rekisteroityminen'>Rekisteröidy</h2>
                <div className='inputDesc'>etunimi <br></br> <input value={etunimi} onChange={(event) => setEtunimi(event.currentTarget.value)} type="text"/></div>
                <div className='inputDesc'>sukunimi <br></br> <input value={sukunimi} onChange={(event) => setSukunimi(event.currentTarget.value)} type="text"/></div>
                <div className='inputDesc'>osoite <br></br> <input value={osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/></div>

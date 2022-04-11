@@ -5,10 +5,10 @@ const kirjautuminen = require('../models/kirjautuminen_model');
 
 router.post('/', 
   function(request, response) {
-    if(request.body.etunimi && request.body.salasana){
-      const etunimi = request.body.etunimi;
+    if(request.body.puhnum && request.body.salasana){
+      const puhnum = request.body.puhnum;
       const salasana = request.body.salasana;
-        kirjautuminen.checkPassword(etunimi, function(dbError, dbResult) {
+        kirjautuminen.checkPassword(puhnum, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
@@ -37,7 +37,7 @@ router.post('/',
         );
       }
     else{
-      console.log("Etunimi tai Salasana puuttuu");
+      console.log("Puhelin numero tai Salasana puuttuu");
       response.send(false);
     }
   }

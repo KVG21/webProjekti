@@ -36,6 +36,7 @@ useEffect(async() => {
                   <p>{arviointi}</p>
                 
                 </div>
+                <button className="naviNappi"><Link className="naviNimi" to="/KirjautuminenSivu">Kirjautuminen</Link></button> 
                 <button className="naviNappi"><Link className="naviNimi" to="/Tuotesivu">Tuotteet</Link></button> 
                 </div>
                 </div>

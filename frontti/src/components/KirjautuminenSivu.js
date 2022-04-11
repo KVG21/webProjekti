@@ -46,6 +46,7 @@ export class Login extends Component{
                     <input type="text" name="salasana" placeholder="Salasana" value={this.state.salasana} onChange={this.handleChange} />
                     <button>Kirjaudu sisään</button>
                 </form>
+                <button className="naviNappi"><Link className="naviNimi" to="/Rekisteröityminen">Etkö ole rekisteröitynyt, rekisteröidy tästä</Link></button> 
             </div>
         )
     }

@@ -1,5 +1,4 @@
 import React from 'react'
-import {useState, useEffect} from 'react';
 import { Link } from "react-router-dom"
 
 //asettelua lähinnä sis. nappit ja linkit

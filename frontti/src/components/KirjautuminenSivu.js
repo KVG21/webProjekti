@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
 import './Kirjautuminen.css'
 import { Link } from "react-router-dom";
-import { Router } from 'express';
-import { render } from 'express/lib/response';
 
 
 
 
-export class Login extends Component{
-    state = {
-        puhnum: '',
-        salasana: ''
-    }
+
+export default class KirjautuminenSivu extends React.Component{
+    
+    constructor(props) {
+        super(props);
+        this.state = {puhnum: '',salasana: '' };
+      }
+    
+    
     handleChange = e => this.setState ({[e.target.name] : e.target.value})
 
     handleSubmit = e => {
@@ -33,38 +35,24 @@ export class Login extends Component{
         this.setState({
             puhnum: '',
             salasana: ''
-        })
-    }
-    render (){
+        }) }
+    
+     render(){
         return(
             <div>
                 <h1>Kirjautuminen</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Käyttäjänimi</label>
-                    <input type="text" name="puhelin-numero" placeholder="Etunimi" value={this.state.puhnum} onChange={this.handleChange} />
+                    <input type="text" name="puhnum" placeholder="puhelin-numero" value={this.state.puhnum} onChange={this.handleChange} />
                     <label>Salasana</label>
                     <input type="text" name="salasana" placeholder="Salasana" value={this.state.salasana} onChange={this.handleChange} />
                     <button>Kirjaudu sisään</button>
                 </form>
+                <nav className="navigointi">
+           <Link className="naviNimi" to="/Rekisteroityminen"> <button className="naviNappi">Rekisteröidy</button></Link>
+            </nav>
             </div>
         )
     }
    
 }
-export class Home extends Component{
-    handleLogout = e => {
-        e.preventDefault();
-        this.props.setUser(null);
-        this.props.history.push("/Etusivu")
-    }
-    render() {
-        return(
-            <div className='Käyttäjä-kortti'>
-                <h1>Tervetuloa {this.props.user.etunimi}</h1>
-                <button onClick={this.handleLogout}>Kirjaudu ulos</button>
-            </div>
-        )
-    }
-}
- 
-export default withRouter(Login)

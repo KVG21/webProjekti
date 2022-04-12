@@ -12,7 +12,10 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => (
     
    <Link className="naviNimi" to="/Ravintoloitsija"> <button className="naviNappi">Ravintoloitsija</button></Link>
   <Link className="naviNimi" to="/receipt"><button className="naviNappi">Kuitti</button></Link>
- 
+  <Link className="naviNimi" to="/"><button className="naviNappi">Kirjautuminen</button></Link>
+  <Link className="naviNimi" to="/Uloskirjautuminen"><button className="naviNappi">Ulos kirjautuminen</button></Link>
+
+
       <label htmlFor="header-search">
           <span className="visually-hidden">Etsi ravintolaa</span>
       </label>

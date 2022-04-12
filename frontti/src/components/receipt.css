@@ -5,4 +5,13 @@
     margin-top: 4%;
     background-color: rgba(224, 222, 222, 0.726);
     border: 2px solid black;
+    flex-direction: row;
   }
+
+.clients_receipt{
+  border: 1px solid pink;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+}

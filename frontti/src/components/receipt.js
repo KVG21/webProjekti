@@ -21,6 +21,7 @@ export default function Receipt() {
 
 
     return (
+        <div className="ravintolaContainer">
         <div className='receiptContainer'>
             <button classname="naviNappi"><Link className='naviNappi' to="/Etusivu">Etusivu</Link></button>
         <div className='tilaushistoria'></div>
@@ -32,6 +33,7 @@ export default function Receipt() {
                         <p>{summa} $</p>
         </div>
         ))}
+        </div>
         </div>
     )
 }

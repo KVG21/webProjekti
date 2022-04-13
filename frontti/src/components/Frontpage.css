@@ -1,5 +1,4 @@
-
-.ravintolaContainer {
+.restaurantContainer {
     display: flex;
     flex-direction: column;
     grid-template-columns: 25% 25% 25%;
@@ -80,7 +79,7 @@
     color:black;
   }
   
-  .ravintolaKuva{
+  .restaurantKuva{
     margin-left:30px;
     width:350px;
     height:350px;

@@ -1,5 +1,5 @@
 import React from 'react'
-import Etusivu from './components/Etusivu'
+import Etusivu from './components/Frontpage'
 import Ravintoloitsija from './components/Ravintoloitsija';
 import Rekisteroityminen from './components/Rekisteroityminen'
 import KirjautuminenSivu from './components/KirjautuminenSivu'

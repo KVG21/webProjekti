@@ -6,10 +6,7 @@ import { Link } from "react-router-dom"
 
 
 export default function Etusivu() {
-
-  const [restaurant, setrestaurant] = useState([])
-
-//url parametriä käyttäen filtteri
+const [restaurant, setrestaurant] = useState([])
 const { search } = window.location;
 const query = new URLSearchParams(search).get('s');
 const [searchQuery, setSearchQuery] = useState(query || '');
@@ -20,22 +17,19 @@ useEffect(async() => {
   res.json()
   )
   setrestaurant(result)
-  
 }, [])
 
-
-//the action
   return (
   <div>        
     <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
     />
-    <div className="ravintolaContainer">
+    <div className="restaurantContainer">
         {filteredrestaurant.map(restaurant => (
            <Link to={ "/Tuotesivu/"+String(restaurant.idRavintola) }> 
            <div className='Items'>
-             <img className="ravintolaKuva"src={restaurant.kuva} alt={restaurant.nimi} />
+             <img className="restaurantKuva"src={restaurant.kuva} alt={restaurant.nimi} />
                <div className = "Tiedot">
                  <p>{restaurant.nimi}</p>
                  <p>{restaurant.osoite}</p>
@@ -51,9 +45,6 @@ useEffect(async() => {
   </div>
   );
 }
-
-
-//antaako restaurantn vai ei? Blank = ei oo tietokannassa jne
 
 const filterrestaurant = (restaurant, query) => {
   if (!query) {

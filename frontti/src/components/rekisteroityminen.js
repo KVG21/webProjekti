@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link, NavLink } from "react-router-dom";
-import './Kayttaja.css'
+import './styles/Kayttaja.css'
 
 
 export default function Rekisteroityminen(){

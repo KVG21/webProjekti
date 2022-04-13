@@ -79,13 +79,6 @@
   color:black;
 }
 
-.ravintolaKuva{
-  margin-left:30px;
-  width:350px;
-  height:350px;
-  border: 2px solid black;
-}
-
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

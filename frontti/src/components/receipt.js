@@ -21,17 +21,19 @@ export default function Receipt() {
 
 
     return (
+        <div>
+        <div className="searchBarContainer">
         <div className='receiptContainer'>
-            <button classname="naviNappi"><Link className='naviNappi' to="/Etusivu">Etusivu</Link></button>
-        <div className='tilaushistoria'></div>
-        {receipt.map(({osoite, pvm, tuotteet,summa}) => (
+            <button classname="naviNappi"><Link className='naviNappi' to="/Frontpage">Etusivu</Link></button>
+        </div>
+        </div>
+        {receipt.map(({osoite, pvm, tuotteet, summa}) => (
                     <div className="clients_receipt">
                         <p>{osoite}</p>
                         <p>{pvm}</p>
                         <p>{tuotteet}</p>
                         <p>{summa} $</p>
         </div>
-        ))}
-        </div>
+        ))}</div>
     )
 }

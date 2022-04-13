@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react';
 import Search from './Searchbar';
-import './Frontpage.css'
+import './styles/Frontpage.css'
 import { Link } from "react-router-dom"
 
 
@@ -29,7 +29,7 @@ useEffect(async() => {
         {filteredrestaurant.map(restaurant => (
            <Link to={ "/Tuotesivu/"+String(restaurant.idRavintola) }> 
            <div className='Items'>
-             <img className="restaurantKuva"src={restaurant.kuva} alt={restaurant.nimi} />
+             <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
                <div className = "Tiedot">
                  <p>{restaurant.nimi}</p>
                  <p>{restaurant.osoite}</p>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './Tuotesivu.js'
-import './styles/receipt.css'
+import './styles/Receipt.css'
 
 export default function Receipt() {
     const [receipt, setreceipt] = useState([])

@@ -1,11 +1,11 @@
 import React from 'react';
-import './Kirjautuminen.css'
+import './styles/Kirjautuminen.css'
 
 export default class Uloskirjautuminen extends React.Component{
     handleLogout = e => {
         e.preventDefault();
         this.props.setUser(null);
-        this.props.history.push("/Etusivu")
+        this.props.history.push("/Frontpage")
     }
      render(){   
         return(

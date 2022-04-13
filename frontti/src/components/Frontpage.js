@@ -1,11 +1,11 @@
 import React from 'react'
 import {useState, useEffect} from 'react';
 import Search from './Searchbar';
-import './Etusivu.css'
+import './Frontpage.css'
 import { Link } from "react-router-dom"
 
 
-export default function Etusivu() {
+export default function Frontpage() {
 const [restaurant, setrestaurant] = useState([])
 const { search } = window.location;
 const query = new URLSearchParams(search).get('s');

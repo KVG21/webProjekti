@@ -56,7 +56,7 @@
   padding:20px;
 }
 
-.naviNappi{
+.navbtn{
   margin-top:10px;
   width:100px;
   margin-left:80px;
@@ -66,16 +66,16 @@
   border-radius:10px;
   cursor: pointer;
 }
-.naviNappi:hover{
+.navbtn:hover{
   background-color:#f77700;
   color:white;
 }
-.naviNappi:active {
+.navbtn:active {
   background-color: #f77700;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-.naviNimi{
+.navName{
   color:black;
 }
 

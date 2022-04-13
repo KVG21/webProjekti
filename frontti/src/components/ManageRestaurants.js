@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import './styles/manageRestaurants.css'
+import './styles/managePages.css'
 
 
 export default function ManageRestaurants() {
@@ -61,8 +61,6 @@ export default function ManageRestaurants() {
         setArviointi("")
         setAsiakasID("")
     }
-
-
     
   return (
         <div>
@@ -109,26 +107,17 @@ export default function ManageRestaurants() {
                             tyhjennaRavintola();
 
                         }}>Tallenna</button>
-                    
-                        <h2 className="luonti">Poista ravintola</h2>
-                        <div>
-                            {ravintolat.map(({idRavintola,nimi}) =>(
-                                <div className="poistaCont">
-                                    <p>{nimi}</p>
-                                    <button className="poistoNappi" onClick={ ()=>{
-                                        poistaRavintola(idRavintola)
-
-                                    }}>Poista</button>
-                                    </div>
-                            ))}
-                        </div>
                         
             </div>
-                                    <div className="tuoteCont">
+                                    <div className="ownedRestaurants">
                                         <h2 className="luonti">Ravintolasi</h2>
                                         {ravintolat.map(({idRavintola, nimi}) =>(
                                             <><p>{nimi}</p><nav className="navigointi">
                                                 <Link className="naviNimi" to={"/Tuotehallinta/"+String(idRavintola)}> <button className="naviNappi">Hallitse tuotteita</button></Link>
+                                                <button className="poistoNappi" onClick={ ()=>{
+                                        poistaRavintola(idRavintola)
+
+                                    }}>Poista</button>
                                             </nav></> 
                                         ))}
 

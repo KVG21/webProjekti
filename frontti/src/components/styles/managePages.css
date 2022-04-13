@@ -6,16 +6,17 @@
     width: 20%;
 }
 
-.tuoteCont{
+.ownedRestaurants{
     display: flex;
     flex-direction: column;
-    margin-left: 1000px;
+    float: left;
 }
 
 .inputDesc{
     width:200px;
     float: left;
     margin-left:50px;
+    align-items: center;
 }
 
 input{
@@ -37,15 +38,18 @@ input{
     border-radius:10px;
     cursor: pointer;
 }
+
 .saveNappi:hover{
     background-color:#4CAF50;
     color:white;
 }
+
 .saveNappi:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
 .poistoNappi{
     margin-top:10px;
     width:100px;
@@ -56,18 +60,36 @@ input{
     border-radius:10px;
     cursor: pointer;
 }
+
 .poistoNappi:hover{
     background-color:#fd3b00;
     color:white;
 }
+
 .poistoNappi:active{
     background-color: #fd3b00;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
 .dropdown{
-    margin-left:50px;
+    margin-left:5px;
+    height:75px;
 }
-.ownedRestauramts{
-    float: right;
+.tuoteCont{
+    display: flex;
+    flex-direction: column;
+    margin-left:500px;
+    float: left;
+}
+
+.itemsForDelete{
+    margin-left:100px;
+}
+
+.deleteCont{
+    display:flex;
+    flex-direction: column;
+    width:400px;
+    align-items: center;
 }

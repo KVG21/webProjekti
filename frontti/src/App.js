@@ -6,7 +6,7 @@ import Rekisteroityminen from './components/Rekisteroityminen'
 import KirjautuminenSivu from './components/KirjautuminenSivu'
 
 import Receipt from './components/Receipt'
-import Tuotesivu from './components/Tuotesivu';
+import ProductView from './components/ProductView';
 import Tuotehallinta from './components/ManageProducts';
 
 import {BrowserRouter, Routes, Route,} from 'react-router-dom';
@@ -23,7 +23,7 @@ function App() {
             <Route path="/Uloskirjautuminen" element={<Uloskirjautuminen/>}/>
             <Route path="/Rekisteroityminen" element={ <Rekisteroityminen/> }/>
 
-            <Route path="/Tuotesivu/:id" element={ <Tuotesivu/> }/>
+            <Route path="/ProductView/:idRavintola" element={ <ProductView/> }/>
 
 
             <Route path="/Receipt" element= { <Receipt/> }/>

@@ -27,7 +27,7 @@ useEffect(async() => {
     />
     <div className="restaurantContainer">
         {filteredrestaurant.map(restaurant => (
-           <Link to={ "/Tuotesivu/"+String(restaurant.idRavintola) }> 
+           <Link to={ "/ProductView/"+String(restaurant.idRavintola) }> 
            <div className='Items'>
              <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
                <div className = "Tiedot">

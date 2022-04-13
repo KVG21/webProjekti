@@ -6,7 +6,6 @@ import './styles/Receipt.css'
 
 export default function Receipt() {
     const [receipt, setreceipt] = useState([])
-
     const  {id}  = useParams();
   console.log(id)
   const url = "http://localhost:3001/historia"

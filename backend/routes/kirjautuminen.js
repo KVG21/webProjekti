@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -5,10 +6,10 @@ const kirjautuminen = require('../models/kirjautuminen_model');
 
 router.post('/', 
   function(request, response) {
-    if(request.body.puhnum && request.body.salasana){
-      const puhnum = request.body.puhnum;
+    if(request.body.puhnro && request.body.salasana){
+      const puhnro = request.body.puhnro;
       const salasana = request.body.salasana;
-        kirjautuminen.checkPassword(puhnum, function(dbError, dbResult) {
+        kirjautuminen.checkPassword(puhnro, function(dbError, dbResult) {
           if(dbError){
             response.json(dbError);
           }
@@ -18,13 +19,13 @@ router.post('/',
               {
                 if(compareResult) {
                   console.log("Onnistui");
-                  response.send(true);
-                  
+                  response.status(204).send('found');
+
                 }
                 else {
                     console.log("Väärä Salasana");
-                    response.send(false);
-                }			
+                    response.status(404).send('Not Found');
+                }
               }
               );
             }
@@ -37,7 +38,7 @@ router.post('/',
         );
       }
     else{
-      console.log("Puhelin numero tai Salasana puuttuu");
+      console.log("puhnro tai Salasana puuttuu");
       response.send(false);
     }
   }

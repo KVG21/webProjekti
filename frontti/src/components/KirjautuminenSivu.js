@@ -1,58 +1,46 @@
-import React, {useState} from 'react';
-import './Kirjautuminen.css'
-import { Link } from "react-router-dom";
+import React from 'react'
+import { useState } from 'react'
+
+import {useNavigate} from "react-router-dom"
 
 
 
+export default function KirjautuminenSivu() {
+    const navigate = useNavigate();
+    const [puhNro, setPuhNro] = useState("")
+    const [salasana, setSalasana] = useState("")
 
+    const Kirjautuminen = async (puhNro, salasana) => {
 
-export default class KirjautuminenSivu extends React.Component{
+        let result = await fetch('http://localhost:3001/kirjautuminen',
+        { method: 'POST',
+        headers:{'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+        puhnro: puhNro,
+        salasana: salasana, 
+        })})
+
+        console.log(String(result.status))
+       
+    if(result.status == 204){ return navigate("/Etusivu", {replace: true})}
+    else  {}
+        
+    }                
+            
+        
+
     
-    constructor(props) {
-        super(props);
-        this.state = {puhnum: '',salasana: '' };
-      }
-    
-    
-    handleChange = e => this.setState ({[e.target.name] : e.target.value})
+return (
+    <div>
+    <h1>Kirjautuminen</h1>
 
-    handleSubmit = e => {
-        e.preventDefault()
-        fetch ('http://localhost:3000/Kirjautuminen' , {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'content-type': 'application/json',
-                'accept': 'application/json'
-            }
-        })
-        .then (response => response.json())
-        .then(data => {
-            localStorage.setItem('IDAsiakas', data.user.id)
-            this.props.setUser(data.user)
-            this.props.history.push('/Etusivu')
-        })
-        this.setState({
-            puhnum: '',
-            salasana: ''
-        }) }
-    
-     render(){
-        return(
-            <div>
-                <h1>Kirjautuminen</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Käyttäjänimi</label>
-                    <input type="text" name="puhnum" placeholder="puhelin-numero" value={this.state.puhnum} onChange={this.handleChange} />
-                    <label>Salasana</label>
-                    <input type="text" name="salasana" placeholder="Salasana" value={this.state.salasana} onChange={this.handleChange} />
-                    <button>Kirjaudu sisään</button>
-                </form>
-                <nav className="navigointi">
-           <Link className="naviNimi" to="/Rekisteroityminen"> <button className="naviNappi">Rekisteröidy</button></Link>
-            </nav>
-            </div>
-        )
-    }
-   
+
+        <div className="inputDesc"> Puhnro <br></br> <input value={puhNro} onChange={(event) => setPuhNro(event.currentTarget.value)} type="text"/></div>
+        <div className="inputDesc"> Salsana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
+        <button onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
+
+</div>
+  )
+
+
 }

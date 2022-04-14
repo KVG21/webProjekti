@@ -1,6 +1,6 @@
 .navbtn{
   margin-top:10px;
-  width:100px;
+  width:120px;
   margin-left:80px;
   background-color: white;
   color:black;
@@ -29,4 +29,10 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+.svgIcon{
+  width:40px;
+  height: 40px;
+  margin-left:400px;
+  margin-top:13px;
 }

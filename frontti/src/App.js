@@ -8,6 +8,7 @@ import KirjautuminenSivu from './components/KirjautuminenSivu'
 import Receipt from './components/Receipt'
 import ProductView from './components/ProductView';
 import Tuotehallinta from './components/ManageProducts';
+import Asiakas from './components/ManageAccount';
 
 import {BrowserRouter, Routes, Route,} from 'react-router-dom';
 import Uloskirjautuminen from './components/Uloskirjautuminen';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/Ravintoloitsija" element={<Ravintoloitsija />} />
 
             <Route path="/Tuotehallinta/:idRavintola" element={ <Tuotehallinta/> } />
+            <Route path="/Asiakas/:idAsiakas" element={ <Asiakas/> }/>
                 
 
         </Routes>

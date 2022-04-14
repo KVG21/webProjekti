@@ -2,6 +2,7 @@ const db = require('../db');
 const bcrypt = require('bcryptjs');
 
 const asiakas = {
+    
     getById: function (puhnro, callback){
         return db.query('select * from asiakas where puhnro=?', [puhnro], callback);
     }, 
@@ -23,8 +24,8 @@ const asiakas = {
 
         bcrypt.hash(asiakas.salasana,10,function(err,hash){
             return db.query(
-            'update asiakas set etunimi=?, sukunimi=?, puhnro=?, osoite=?, salasana=?,tyyppi=? where idAsiakas=?',
-              [asiakas.etunimi, asiakas.sukunimi, asiakas.puhnro, asiakas.osoite, hash, asiakas.tyyppi, idAsiakas],
+            'update asiakas set puhnro=?, osoite=?, salasana=? where idAsiakas=?',
+              [asiakas.puhnro, asiakas.osoite, hash, idAsiakas],
               callback);});
     }
 };

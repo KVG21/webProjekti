@@ -12,8 +12,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => (
     
    <Link className="navName" to="/Ravintoloitsija"> <button className="navbtn">Ravintoloitsija</button></Link>
   <Link className="navName" to="/Receipt"><button className="navbtn">Kuitti</button></Link>
-  <Link className="navName" to="/"><button className="navbtn">Kirjautuminen</button></Link>
-  <Link className="navName" to="/Uloskirjautuminen"><button className="navbtn">Ulos kirjautuminen</button></Link>
+  <Link className="navName" to="/"><button className="navbtn">Ulos kirjautuminen</button></Link>
 
 
       <label htmlFor="header-search">

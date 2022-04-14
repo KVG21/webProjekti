@@ -34,14 +34,10 @@ export default function KirjautuminenSivu() {
 return (
     <div>
     <h1>Kirjautuminen</h1>
-
-
         <div className="inputDesc"> Puhnro <br></br> <input value={puhNro} onChange={(event) => setPuhNro(event.currentTarget.value)} type="text"/></div>
         <div className="inputDesc"> Salsana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
         <button onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
-
         <button classname="navbtn"><Link className='navbtn' to="/Rekisteroityminen">Rekisteröidy käyttäjäksi</Link></button>
-
 </div>
   )
 

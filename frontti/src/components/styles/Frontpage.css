@@ -1,5 +1,4 @@
-
-.ravintolaContainer {
+.restaurantContainer {
     display: flex;
     flex-direction: column;
     grid-template-columns: 25% 25% 25%;
@@ -56,31 +55,8 @@
     border: 5px solid black;
     padding:20px;
   }
-  
-  .naviNappi{
-    margin-top:10px;
-    width:100px;
-    margin-left:80px;
-    background-color: white;
-    color:black;
-    border: 2px solid #f77700;
-    border-radius:10px;
-    cursor: pointer;
-  }
-  .naviNappi:hover{
-    background-color:#f77700;
-    color:white;
-  }
-  .naviNappi:active {
-    background-color: #f77700;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  .naviNimi{
-    color:black;
-  }
-  
-  .ravintolaKuva{
+
+  .restaurantPic{
     margin-left:30px;
     width:350px;
     height:350px;

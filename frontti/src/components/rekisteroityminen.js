@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { Link } from "react-router-dom";
-import './Kayttaja.css'
+import { Link, NavLink } from "react-router-dom";
+import './styles/Kayttaja.css'
 
 
 export default function Rekisteroityminen(){
@@ -29,7 +29,7 @@ export default function Rekisteroityminen(){
          <div>
            <div className='etunimi'>
            <nav className='navigointi'>
-             <button className="naviNappi"><Link className='naviNappi' to="/Etusivu">Etusivu</Link></button>
+             <button classname="navbtn"><Link className='navbtn' to="/Etusivu">Etusivu</Link></button>
            </nav>
            </div>
            <div className="kayttajaCont">

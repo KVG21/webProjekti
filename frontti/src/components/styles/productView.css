@@ -1,23 +1,23 @@
-.tuoteMainContainer{
+.productMainContainer{
   display: flex;
   margin-left: 15%;
   margin-right: 15%;
   margin-top: 4%;
   background-color: rgba(224, 222, 222, 0.726);
-  border: 2px solid black;
+  border: 3px solid black;
   
 }
-.tuoteKontti {
+.productContainer {
   display: column;
   padding: 10px;
   width: 90%;
   margin-right: 5%;
 }
 
-.tuotteet {
+.products {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 2px solid black;
   font-size: 20px;
   font-weight: bolder;
   padding: 20px;
@@ -25,17 +25,17 @@
   background-color: rgba(245, 174, 108, 0.548);
 }
 
-.ostoskoriKontti {
+.shoppingCartContainer {
   display: column;
   padding: 10px;
   width: 30%;
-  border-left: 1px solid black;
+  border-left: 3px solid black;
 }
 
-.ostoskoriTavarat {
+.shoppingCartItems {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid rgba(0, 0, 0, 0.568);
+  border: 2px solid rgba(0, 0, 0, 0.568);
   background-color: rgb(255, 83, 83);
   font-weight: bolder;
   font-size: 15px;
@@ -43,30 +43,38 @@
   margin-bottom: 5%;
 }
 
-.otsikko {
+.subTitle {
   font-size: 40px;
   text-align: center;
   font-weight: Bold;
   font-style: italic
 }
 
-.Napit{
+.subButtons{
   background-color: green;
   border-radius: 8px;
   margin-top: 10px;
   font-Size: 30px;
+  width: 50px;
 }
 
-.YhteenvetoKontti {
+.buyButton {
+  background-color: rgb(122, 0, 128);
+  border-radius: 8px;
+  margin-top: 10px;
+  font-Size: 30px;
+  width: 55%;
+}
+
+.recapitulationContainer {
   display: column;  
-  border-top: 1px solid;
+  border-top: 2px solid;
   padding: 20px; 
   font-size: 20px;
   font-weight: bold;
 }
 
-.yhteenVeto {
-  border-top: 1px solid;
+.recapitulation {
   display: column;
 }
 
@@ -74,13 +82,13 @@
   background-color: red;
 }
 
-.tuoteKuva{
+.productImg{
 width:60px;
 height:60px;
 border: 2px solid black;
 }
 
-.Otsake{
+.header{
 display: flex;
 padding: 20px;
 font-size: 40px;
@@ -92,3 +100,12 @@ width: 100%;
 .inputDesc{ 
 margin-left:4px;
 }
+
+
+
+
+
+
+
+
+

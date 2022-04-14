@@ -66,7 +66,7 @@ export default function ManageRestaurants() {
         <div>
             <div className="name">
             <nav className="navigointi">
-           <Link className="naviNimi" to="/Etusivu"> <button className="naviNappi">Etusivu</button></Link>
+           <Link className="navName" to="/Etusivu"> <button className="navbtn">Etusivu</button></Link>
             </nav> 
             </div>
             <div className="ravintolaCont">
@@ -113,7 +113,7 @@ export default function ManageRestaurants() {
                                         <h2 className="luonti">Ravintolasi</h2>
                                         {ravintolat.map(({idRavintola, nimi}) =>(
                                             <><p>{nimi}</p><nav className="navigointi">
-                                                <Link className="naviNimi" to={"/Tuotehallinta/"+String(idRavintola)}> <button className="naviNappi">Hallitse tuotteita</button></Link>
+                                                <Link className="navName" to={"/Tuotehallinta/"+String(idRavintola)}> <button className="navbtn">Hallitse tuotteita</button></Link>
                                                 <button className="poistoNappi" onClick={ ()=>{
                                         poistaRavintola(idRavintola)
 

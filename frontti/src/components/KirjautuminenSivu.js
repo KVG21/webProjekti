@@ -40,6 +40,8 @@ return (
         <div className="inputDesc"> Salsana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
         <button onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
 
+        <button classname="navbtn"><Link className='navbtn' to="/Rekisteroityminen">Rekisteröidy käyttäjäksi</Link></button>
+
 </div>
   )
 

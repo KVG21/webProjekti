@@ -10,10 +10,10 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => (
         <span className="visually-hidden">Etsi ravintolaa</span>
     </label>
     
-   <Link className="naviNimi" to="/Ravintoloitsija"> <button className="naviNappi">Ravintoloitsija</button></Link>
-  <Link className="naviNimi" to="/Receipt"><button className="naviNappi">Kuitti</button></Link>
-  <Link className="naviNimi" to="/"><button className="naviNappi">Kirjautuminen</button></Link>
-  <Link className="naviNimi" to="/Uloskirjautuminen"><button className="naviNappi">Ulos kirjautuminen</button></Link>
+   <Link className="navName" to="/Ravintoloitsija"> <button className="navbtn">Ravintoloitsija</button></Link>
+  <Link className="navName" to="/Receipt"><button className="navbtn">Kuitti</button></Link>
+  <Link className="navName" to="/"><button className="navbtn">Kirjautuminen</button></Link>
+  <Link className="navName" to="/Uloskirjautuminen"><button className="navbtn">Ulos kirjautuminen</button></Link>
 
 
       <label htmlFor="header-search">
@@ -29,7 +29,6 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => (
           placeholder="Etsi ravintolaa"
           name="s" 
       />
-      <button type="submit">Search</button>
   </form>
 );
 

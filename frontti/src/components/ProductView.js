@@ -96,7 +96,7 @@ export default function ProductView() {
   return (
     <div>
       <div className="header"> 
-            <Link className="naviNimi" to="/etusivu">KVG RAFLA</Link>
+            <Link className="navName" to="/etusivu">KVG RAFLA</Link>
         </div>
       <div>
     </div>

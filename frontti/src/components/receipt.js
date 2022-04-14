@@ -22,7 +22,7 @@ export default function Receipt() {
         <div>
         <div className="searchBarContainer">
         <div className='receiptContainer'>
-            <button classname="naviNappi"><Link className='naviNappi' to="/Frontpage">Etusivu</Link></button>
+            <button classname="navbtn"><Link className='navbtn' to="/Etusivu">Etusivu</Link></button>
         </div>
         </div>
         {receipt.map(({osoite, pvm, tuotteet, summa}) => (

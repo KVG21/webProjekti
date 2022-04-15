@@ -23,7 +23,7 @@ export default function KirjautuminenSivu() {
 
         console.log(String(result.status))
        
-    if(result.status == 200){ return navigate("/Etusivu", {replace: true})}
+    if(result.status == 204){ return navigate("/Etusivu", {replace: true})}
     else  {
         console.log("moro")
     }

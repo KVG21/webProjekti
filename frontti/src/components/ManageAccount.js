@@ -39,6 +39,12 @@ export default function ManageAccount() {
         setOsoite("")
         setSalasana("")
     }
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+        const togglePassword = () => {
+            setPasswordShown(!passwordShown);
+        };
   return (
     <div>
         <div className="name">
@@ -50,15 +56,18 @@ export default function ManageAccount() {
             <h2 className="customerTitle">Muokkaa tietojasi</h2>
                 <div className="inputDesc">Puhelinnumero  <input value={puhnro} onChange={(event) => setPuhnro(event.currentTarget.value)} type="text"/> </div>
                 <div className="inputDesc">Kotiosoite <input value={osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/> </div>
-                <div className="inputDesc">Salasana<input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/> </div>
-
-                    <button className="saveNappi" onClick={ ()=>{
+                <div className="inputDesc">Salasana<input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type={passwordShown ? "text" : "password"}/> </div>
+                <button className="btnShowPwd" onClick={togglePassword}>Näytä salasana</button>
+        </div>                       
+                <div className="saveCont">
+                    <button className="savebtn" onClick={ ()=>{
                         editCustomer({
                         puhnro,osoite,salasana
                     })
                         clearFields();
                     }}>Päivitä</button>
-        </div>
+                </div>
+
     </div>
   )
 }

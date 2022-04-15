@@ -30,9 +30,12 @@
   white-space: nowrap;
   width: 1px;
 }
+.spaceForSvg{
+  margin-left:400px;
+}
+
 .svgIcon{
   width:40px;
   height: 40px;
-  margin-left:400px;
   margin-top:13px;
 }

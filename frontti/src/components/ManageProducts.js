@@ -5,7 +5,7 @@ import '../App.css'
 
 export default function ManageProducts() {
 
-    const [tuotteet, setTuotteet] = useState([])
+    const [products, setProducts] = useState([])
 
     const  {idRavintola}  = useParams();
     console.log(idRavintola)
@@ -16,18 +16,18 @@ export default function ManageProducts() {
     const result = await fetch(url).then((res)=>
       res.json()
     )
-    setTuotteet(result)
+    setProducts(result)
   }, [])
 
-    const poistaTuote = async(idTuote) => {
-        let uudetTuotteet = [...tuotteet];
+    const deleteProduct = async(idTuote) => {
+        let uudetTuotteet = [...products];
         let poistettuTuote = uudetTuotteet.findIndex(p => p.id === idTuote);
         await fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'})
         uudetTuotteet.splice(poistettuTuote, 1);
-        setTuotteet(uudetTuotteet);
+        setProducts(uudetTuotteet);
     }
 
-    const uusiTuote = async(item) => {
+    const createProduct = async(item) => {
         await fetch(`http://localhost:3001/tuote`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
@@ -41,7 +41,7 @@ export default function ManageProducts() {
         const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => 
         res.json()
         )
-        setTuotteet(resultTuote)
+        setProducts(resultTuote)
     }
     const [kategoria, setKategoria] = useState("")
     const [tuotenimi, setTuotenimi] = useState("")
@@ -49,7 +49,7 @@ export default function ManageProducts() {
     const [hinta, setHinta] = useState("")
     const [tuotekuva, setTuotekuva] = useState("")
 
-    const tyhjennaTuote = () => {
+    const clearFields = () => {
         setKategoria("")
         setTuotenimi("")
         setKuvaus("")
@@ -66,27 +66,27 @@ export default function ManageProducts() {
             </nav> 
     </div>        
     <div className="tuoteCont">
-    <h2 className="luonti">Lisää tuote</h2>
+    <h2 className="manageTitle">Lisää tuote</h2>
             <div className="inputDesc"> Kategoria <input value={kategoria} onChange={(event) => setKategoria(event.currentTarget.value)} type="text"/></div>
             <div className="inputDesc"> Nimi <br></br><input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
             <div className="inputDesc"> Kuvaus <input value={kuvaus} onChange={(event) => setKuvaus(event.currentTarget.value)} type="text"/></div>
             <div className="inputDesc"> Hinta <input value={hinta} onChange={(event) => setHinta(event.currentTarget.value)} type="text"/></div>
             <div className="inputDesc"> Kuva URL <input value={tuotekuva} onChange={(event) => setTuotekuva(event.target.value)} type="text"/></div>
 
-                <button className="saveNappi" onClick={()=>{
-                    uusiTuote({
+                <button className="savebtn" onClick={()=>{
+                    createProduct({
                     tuotenimi,kuvaus,hinta,tuotekuva
                 })
-                tyhjennaTuote();                            
+                clearFields();                            
                 }}>Tallenna</button>
     </div>
     <div className="deleteCont">
-                <h2 className="luonti">Poista tuote</h2>
-                {tuotteet.map(({idTuote,nimi}) =>(
+                <h2 className="manageTitle">Poista tuote</h2>
+                {products.map(({idTuote,nimi}) =>(
                     <div className="itemsForDelete">
                         <p>{nimi}</p>
-                        <button className="poistoNappi" onClick={ ()=>{
-                            poistaTuote(idTuote)
+                        <button className="deletebtn" onClick={ ()=>{
+                            deleteProduct(idTuote)
                         }}>Poista</button>
                         </div>
                 ))}

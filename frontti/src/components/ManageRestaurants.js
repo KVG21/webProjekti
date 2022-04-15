@@ -6,25 +6,25 @@ import './styles/managePages.css'
 export default function ManageRestaurants() {
 
     const {idAsiakas} = useParams();
-    const [ravintolat, setRavintolat] = useState([])
+    const [restaurants, setRestaurants] = useState([])
 
     useEffect(async () => {
         const result = await fetch(`http://localhost:3001/ravintola${idAsiakas}`).then((res) => 
         res.json()
         )
-        setRavintolat(result)
+        setRestaurants(result)
     }, [])
 
-    const poistaRavintola = async (idRavintola) => {
-        let uudetRaflat = [...ravintolat];
+    const deleteRestaurant = async (idRavintola) => {
+        let uudetRaflat = [...restaurants];
         let poistettu = uudetRaflat.findIndex(p => p.id === idRavintola);
         await fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'DELETE'})
         uudetRaflat.splice(poistettu, 1);
-        setRavintolat(uudetRaflat);
+        setRestaurants(uudetRaflat);
     }
 
     
-    const uusiRavintola = async (item) => {
+    const createRestaurant = async (item) => {
         await fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
@@ -40,7 +40,7 @@ export default function ManageRestaurants() {
         const result = await fetch(`http://localhost:3001/ravintola/${idAsiakas}`).then((res) => 
         res.json()
         )
-        setRavintolat(result)
+        setRestaurants(result)
     }
 
     const [nimi, setNimi] = useState("")
@@ -51,7 +51,7 @@ export default function ManageRestaurants() {
     const [hintataso, setHintataso] = useState("")
     const [arviointi, setArviointi] = useState("")
 
-    const tyhjennaRavintola = () => {
+    const clearFields = () => {
         setNimi("")
         setOsoite("")
         setAukiolo("")
@@ -68,8 +68,8 @@ export default function ManageRestaurants() {
            <Link className="navName" to="/Etusivu"> <button className="navbtn">Etusivu</button></Link>
             </nav> 
             </div>
-            <div className="ravintolaCont">
-                <h2 className="luonti">Lisää ravintola</h2>
+            <div className="restaurantCont">
+                <h2 className="manageTitle">Lisää ravintola</h2>
                     
                     <div className="inputDesc"> Nimi <br></br> <input value={nimi} onChange={(event) => setNimi(event.currentTarget.value)} type="text"/></div>
                     <div className="inputDesc"> Osoite <input value={osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/></div>
@@ -102,18 +102,18 @@ export default function ManageRestaurants() {
                             uusiRavintola({
                             nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi
                         })
-                            tyhjennaRavintola();
+                            clearFields();
 
                         }}>Tallenna</button>
                         
             </div>
                                     <div className="ownedRestaurants">
-                                        <h2 className="luonti">Ravintolasi</h2>
-                                        {ravintolat.map(({idRavintola, nimi}) =>(
+                                        <h2 className="manageTitle">Ravintolasi</h2>
+                                        {restaurants.map(({idRavintola, nimi}) =>(
                                             <><p>{nimi}</p><nav className="navigointi">
                                                 <Link className="navName" to={"/Tuotehallinta/"+String(idRavintola)}> <button className="navbtn">Hallitse tuotteita</button></Link>
-                                                <button className="poistoNappi" onClick={ ()=>{
-                                        poistaRavintola(idRavintola)
+                                                <button className="deletebtn" onClick={ ()=>{
+                                        deleteRestaurant(idRavintola)
 
                                     }}>Poista</button>
                                             </nav></> 

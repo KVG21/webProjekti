@@ -1,4 +1,4 @@
-.ravintolaCont{
+.restaurantCont{
     display: flex;
     flex-direction: column;
     float: left;
@@ -23,12 +23,12 @@ input{
     margin-left:10px;
 }
 
-.luonti{
+.manageTitle{
     margin-left:50px;
     text-decoration: underline;
 }
 
-.saveNappi{
+.savebtn{
     margin-top:10px;
     width:100px;
     margin-left:80px;
@@ -39,18 +39,18 @@ input{
     cursor: pointer;
 }
 
-.saveNappi:hover{
+.savebtn:hover{
     background-color:#4CAF50;
     color:white;
 }
 
-.saveNappi:active {
+.savebtn:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
 
-.poistoNappi{
+.deletebtn{
     margin-top:10px;
     width:100px;
     margin-left:80px;
@@ -61,12 +61,12 @@ input{
     cursor: pointer;
 }
 
-.poistoNappi:hover{
+.deletebtn:hover{
     background-color:#fd3b00;
     color:white;
 }
 
-.poistoNappi:active{
+.deletebtn:active{
     background-color: #fd3b00;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
@@ -93,6 +93,36 @@ input{
     width:400px;
     align-items: center;
 }
+
 .customerContainer{
-    margin-left:600px;
+    margin-left:800px;
+    width: 400px;
+    height:300px;
+}
+
+.btnShowPwd{
+    margin-top:20px;
+    width:80px;
+    background-color: white;
+    color:black;
+    border: 2px solid #e5ff00;
+    border-radius:10px;
+    cursor: pointer;
+    float:right;
+    font-size: 12px;
+}
+
+.btnShowPwd:hover{
+    background-color:#e5ff00;
+    color:white;
+}
+
+.btnShowPwd:active{
+    background-color: #e5ff00;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.saveCont{
+    margin-left:800px;
 }

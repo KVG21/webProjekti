@@ -4,6 +4,7 @@ import Search from './Searchbar';
 import './styles/Frontpage.css'
 import { Link, useParams } from "react-router-dom"
 
+//filtterin ja hakupalkin aktuaalinen koodi ja sen fetchaus
 
 export default function Frontpage() {
 
@@ -22,6 +23,7 @@ useEffect(async() => {
   setrestaurant(result)
 }, [])
 
+//mappausta, tyylittelyä containerit ja viewit
   return (
   <div>        
     <Search
@@ -50,6 +52,7 @@ useEffect(async() => {
   );
 }
 
+//searchbarin filtterin jatkoa, joko näyttää ravintolan tai ei.
 const filterrestaurant = (restaurant, query) => {
   if (!query) {
       return restaurant;

@@ -10,6 +10,7 @@ export default function Receipt() {
   const url = "http://localhost:3001/historia"
   console.log(url)
 
+  //fetchaus tietokannasta, haetaan kuittitietoja
     useEffect(async() => {
         const result = await fetch(url).then((res)=>
         res.json())
@@ -17,7 +18,7 @@ export default function Receipt() {
         console.log(receipt)
     }, [])
 
-
+//tyylittelyä containerit lähinnä, mappaus, näyttää kuitissa tiedot
     return (
         <div>
         <div className="searchBarContainer">

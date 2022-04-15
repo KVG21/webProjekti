@@ -5,25 +5,26 @@ import './styles/receipt.css'
 
 export default function Receipt() {
     const [receipt, setreceipt] = useState([])
-    const  {id}  = useParams();
-  console.log(id)
-  const url = "http://localhost:3001/historia"
-  console.log(url)
+
+    const  {idAsiakas}  = useParams();
+    const url = "http://localhost:3001/historia/"+idAsiakas
 
   //fetchaus tietokannasta, haetaan kuittitietoja
     useEffect(async() => {
         const result = await fetch(url).then((res)=>
-        res.json())
+        res.json()
+        )
         setreceipt(result)
         console.log(receipt)
     }, [])
+    
 
 //tyylittelyä containerit lähinnä, mappaus, näyttää kuitissa tiedot
     return (
         <div>
         <div className="searchBarContainer">
         <div className='receiptContainer'>
-        <Link className="navName" to="/Etusivu"> <button className="navbtn">Etusivu</button></Link>
+        <Link className="navName" to={"/Etusivu/"+idAsiakas}> <button className="navbtn">Etusivu</button></Link>
         </div>
         </div>
         {receipt.map(({osoite, pvm, tuotteet, summa}) => (

@@ -4,6 +4,18 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const kirjautuminen = require('../models/kirjautuminen_model');
 
+router.get('/:id?', function (req, res) {
+  if(req.params.id){
+      kirjautuminen.getById(req.params.id, function (err, dbResult){
+          if(err) { 
+              res.json(err);
+          } else{
+              res.json(dbResult);
+          }
+      });
+  }
+});
+
 router.post('/', 
   function(request, response) {
     if(request.body.puhnro && request.body.salasana){

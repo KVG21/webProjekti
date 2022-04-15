@@ -22,7 +22,7 @@ export default function KirjautuminenSivu() {
         })})
        
         if(result.status == 204){
-            const url = "http://localhost:3001/asiakas/"+puhNro   
+            const url = "http://localhost:3001/kirjautuminen/"+puhNro   
                 const result = await fetch(url).then((res)=>
                   res.json()
                 )

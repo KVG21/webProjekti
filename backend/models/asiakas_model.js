@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 
 const asiakas = {
     
-    getById: function (puhnro, callback){
-        return db.query('select * from asiakas where puhnro=?', [puhnro], callback);
+    getById: function (id, callback){
+        return db.query('select * from asiakas where idAsiakas=?', [id], callback);
     }, 
     getAll: function (callback){
         return db.query('select * from asiakas', callback);

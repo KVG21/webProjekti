@@ -4,23 +4,27 @@ import { Link, useParams } from 'react-router-dom'
 import './styles/productView.css'
 
 export default function ProductView() { 
+  const [Products, setProducts] = useState([]) 
+  const [ShoppingCart,setShoppingCart] = useState([])
+  const [address,setAddress] = useState("")
+  const [Total,setTotal] = useState(0);
+  const [customer, setCustomer] = useState("")
 
   const  {idRavintola,idAsiakas}  = useParams();
   const url = "http://localhost:3001/tuote/"+idRavintola
-
-  const [Products, setProducts] = useState([]) 
-
-  const [ShoppingCart,setShoppingCart] = useState([])
-
-  const [Address,setAddress] = useState("")
-
-  const [Total,setTotal] = useState(0);
 
   useEffect(async() =>{ //fetch items from backend api
     const result = await fetch(url).then((res)=>
       res.json()
     )
     setProducts(result)
+  }, [])
+
+  useEffect(async() =>{
+    const result = await fetch(`http://localhost:3001/asiakas/${idAsiakas}`).then((res)=>
+      res.json()
+      )
+      setCustomer(result)
   }, [])
 
   const addToCart = (idTuote,nimi,hinta) => {
@@ -83,7 +87,7 @@ export default function ProductView() {
         fetch(`http://localhost:3001/historia`,{ method: 'POST',
           headers:{'Content-Type' : 'application/json'},
           body: JSON.stringify({
-          osoite : Address,
+          osoite : address,
           pvm: date,
           tuotteet: Items,
           summa: Total,
@@ -131,8 +135,8 @@ export default function ProductView() {
                 <div className="recapitulation">
                   <p>{Total} $</p>
                     <div className="inputDesc"> Toimitus osoite
-                      <input value={Address} onChange={(event) => setAddress(event.currentTarget.value)} type="text"/>
-                    <button className="buyButton" onClick={ ()=> BuyProducts(Address)}>Osta</button>
+                      <input value={address} onChange={(event) => setAddress(event.currentTarget.value)} type="text"/>
+                    <button className="buyButton" onClick={ ()=> BuyProducts(address)}>Osta</button>
                   </div>
                 </div>           
               </div>

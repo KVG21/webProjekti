@@ -5,11 +5,13 @@ import './styles/managePages.css'
 
 export default function ManageRestaurants() {
 
-    const {idAsiakas} = useParams();
     const [restaurants, setRestaurants] = useState([])
 
+    const {idAsiakas} = useParams();
+    const url = "http://localhost:3001/ravintola/"+idAsiakas
+
     useEffect(async () => {
-        const result = await fetch(`http://localhost:3001/ravintola${idAsiakas}`).then((res) => 
+        const result = await fetch(url).then((res) => 
         res.json()
         )
         setRestaurants(result)
@@ -65,7 +67,7 @@ export default function ManageRestaurants() {
         <div>
             <div className="name">
             <nav className="navigointi">
-           <Link className="navName" to="/Etusivu"> <button className="navbtn">Etusivu</button></Link>
+           <Link className="navName" to={"/Etusivu/"+idAsiakas}> <button className="navbtn">Etusivu</button></Link>
             </nav> 
             </div>
             <div className="restaurantCont">
@@ -99,7 +101,7 @@ export default function ManageRestaurants() {
                     <div className="inputDesc"> Arviointi <input value={arviointi} onChange={(event) => setArviointi(event.currentTarget.value)} type="text"/></div>
         
                         <button className="saveNappi"onClick={()=>{
-                            uusiRavintola({
+                            createRestaurant({
                             nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi
                         })
                             clearFields();

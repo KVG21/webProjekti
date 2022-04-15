@@ -5,7 +5,7 @@ import './styles/productView.css'
 
 export default function ProductView() { 
 
-  const  {idRavintola}  = useParams();
+  const  {idRavintola,idAsiakas}  = useParams();
   const url = "http://localhost:3001/tuote/"+idRavintola
 
   const [Products, setProducts] = useState([]) 
@@ -87,7 +87,7 @@ export default function ProductView() {
           pvm: date,
           tuotteet: Items,
           summa: Total,
-          asiakasID: 1
+          asiakasID: idAsiakas
           })})
           return alert("Ostoksesi onnistui :)")
       }
@@ -96,7 +96,7 @@ export default function ProductView() {
   return (
     <div>
       <div className="header"> 
-            <Link className="navName" to="/etusivu">KVG RAFLA</Link>
+            <Link className="navName" to={"/etusivu/"+String(idAsiakas)}>KVG RAFLA</Link>
         </div>
       <div>
     </div>

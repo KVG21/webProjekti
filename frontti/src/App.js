@@ -20,16 +20,16 @@ function App() {
         <div>   
         <Routes>
             <Route path="/" element={ <KirjautuminenSivu/> }/>
-            <Route path="/Etusivu" element={ <Etusivu/> }/>
+            <Route path="/Etusivu/:idAsiakas" element={ <Etusivu/> }/>
             <Route path="/Uloskirjautuminen" element={<Uloskirjautuminen/>}/>
             <Route path="/Rekisteroityminen" element={ <Rekisteroityminen/> }/>
 
-            <Route path="/ProductView/:idRavintola" element={ <ProductView/> }/>
+            <Route path="/ProductView/:idRavintola/:idAsiakas" element={ <ProductView/> }/>
 
 
-            <Route path="/Receipt" element= { <Receipt/> }/>
+            <Route path="/Receipt/:idAsiakas" element= { <Receipt/> }/>
 
-            <Route path="/Ravintoloitsija" element={<Ravintoloitsija />} />
+            <Route path="/Ravintoloitsija/:idAsiakas" element={<Ravintoloitsija />} />
 
             <Route path="/Tuotehallinta/:idRavintola" element={ <Tuotehallinta/> } />
             <Route path="/Asiakas/:idAsiakas" element={ <Asiakas/> }/>

@@ -2,10 +2,13 @@ import React from 'react'
 import {useState, useEffect} from 'react';
 import Search from './Searchbar';
 import './styles/Frontpage.css'
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 
 export default function Frontpage() {
+
+  const {idAsiakas} = useParams();
+
 const [restaurant, setrestaurant] = useState([])
 const { search } = window.location;
 const query = new URLSearchParams(search).get('s');
@@ -24,10 +27,11 @@ useEffect(async() => {
     <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        idAsiakas={idAsiakas}
     />
     <div className="restaurantContainer">
         {filteredrestaurant.map(restaurant => (
-           <Link to={ "/ProductView/"+String(restaurant.idRavintola) }> 
+           <Link to={ "/ProductView/"+String(restaurant.idRavintola)+"/"+String(idAsiakas) }> 
            <div className='Items'>
              <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
                <div className = "Tiedot">

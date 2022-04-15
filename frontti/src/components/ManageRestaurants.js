@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './styles/managePages.css'
 
 
 export default function ManageRestaurants() {
 
+    const {idAsiakas} = useParams();
     const [ravintolat, setRavintolat] = useState([])
 
     useEffect(async () => {
-        const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
+        const result = await fetch(`http://localhost:3001/ravintola${idAsiakas}`).then((res) => 
         res.json()
         )
         setRavintolat(result)
@@ -34,9 +35,9 @@ export default function ManageRestaurants() {
         tyyppi: item.tyyppi,
         hintataso: item.hintataso,
         arviointi: item.arviointi,
-        asiakasID: item.asiakasID,  
+        asiakasID: Number(idAsiakas),  
         })})
-        const result = await fetch(`http://localhost:3001/ravintola`).then((res) => 
+        const result = await fetch(`http://localhost:3001/ravintola/${idAsiakas}`).then((res) => 
         res.json()
         )
         setRavintolat(result)
@@ -49,7 +50,6 @@ export default function ManageRestaurants() {
     const [tyyppi, setTyyppi] = useState("")
     const [hintataso, setHintataso] = useState("")
     const [arviointi, setArviointi] = useState("")
-    const [asiakasID, setAsiakasID] = useState("")
 
     const tyhjennaRavintola = () => {
         setNimi("")
@@ -59,7 +59,6 @@ export default function ManageRestaurants() {
         setTyyppi("")
         setHintataso("")
         setArviointi("")
-        setAsiakasID("")
     }
     
   return (
@@ -98,11 +97,10 @@ export default function ManageRestaurants() {
                             </select>
                     </div>
                     <div className="inputDesc"> Arviointi <input value={arviointi} onChange={(event) => setArviointi(event.currentTarget.value)} type="text"/></div>
-                    <div className="inputDesc"> Ravintoloitsija ID <input value={asiakasID} onChange={(event) => setAsiakasID(event.currentTarget.value)} type="text"/></div>
         
                         <button className="saveNappi"onClick={()=>{
                             uusiRavintola({
-                            nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi,asiakasID
+                            nimi,osoite,aukiolo,kuva,tyyppi,hintataso,arviointi
                         })
                             tyhjennaRavintola();
 

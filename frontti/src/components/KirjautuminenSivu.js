@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom"
 
 export default function KirjautuminenSivu() {
     const navigate = useNavigate();
+    const [customer, setCustomer] = useState("");
     const [puhNro, setPuhNro] = useState("")
     const [salasana, setSalasana] = useState("")
 
@@ -20,17 +21,31 @@ export default function KirjautuminenSivu() {
         puhnro: puhNro,
         salasana: salasana, 
         })})
-
-        console.log(String(result.status))
        
-    if(result.status == 204){ return navigate("/Etusivu", {replace: true})}
-    else  {
-        console.log("moro")
-    }
-        
+        if(result.status == 204){
+            const url = "http://localhost:3001/asiakas/"+puhNro   
+                const result = await fetch(url).then((res)=>
+                  res.json()
+                )
+                setCustomer(result)
+                getIndex()
+                
+        }else  {
+            return alert("Puuttuvia tietoja")
+        }    
     }                
             
-        
+      const getIndex = () => {
+        let newCustomer = [...customer]
+        let index = newCustomer.findIndex(i => i.puhnro === puhNro);    
+        if(index !== -1){
+            let id = {...customer[index]}
+            let SendId = id.idAsiakas    
+              return navigate("/Etusivu/"+String(SendId), {replace: true})
+        }else {
+            return alert("Käyttäjää ei löydy")
+        }
+      }  
 
     
 return (

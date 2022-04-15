@@ -43,7 +43,7 @@ export default function ManageAccount() {
     <div>
         <div className="name">
             <nav className="navigointi">
-                <Link className="navName" to="/Etusivu"> <button className="navbtn">Takaisin etusivulle</button></Link>
+                <Link className="navName" to={"/Etusivu/"+String(idAsiakas)}> <button className="navbtn">Takaisin etusivulle</button></Link>
             </nav>
         </div>
         <div className="customerContainer">

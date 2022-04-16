@@ -1,3 +1,2 @@
-node_modules
-backend/db.js
-Database.mwb.bak
+/node_modules
+db.js

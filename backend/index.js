@@ -14,8 +14,8 @@ const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
-app.get('/', (req, res) => {
-  res.send('build')
+app.get('/hello', (req, res) => {
+  res.send('Hello World!')
 })
 app.use(bodyParser.json());
 app.use(cors());

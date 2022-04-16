@@ -6,12 +6,17 @@ import './styles/managePages.css'
 export default function ManageRestaurants() {
 
     const [restaurants, setRestaurants] = useState([])
-
+    const [nimi, setNimi] = useState("")
+    const [osoite, setOsoite] = useState("")
+    const [aukiolo, setAukiolo] = useState("")
+    const [kuva, setKuva] = useState("")
+    const [tyyppi, setTyyppi] = useState("")
+    const [hintataso, setHintataso] = useState("")
+    const [arviointi, setArviointi] = useState("")
     const {idAsiakas} = useParams();
-    const url = "http://localhost:3001/ravintola/"+idAsiakas
 
     useEffect(async () => {
-        const result = await fetch(url).then((res) => 
+        const result = await fetch(`http://localhost:3001/ravintola/${idAsiakas}`).then((res) => 
         res.json()
         )
         setRestaurants(result)
@@ -44,14 +49,6 @@ export default function ManageRestaurants() {
         )
         setRestaurants(result)
     }
-
-    const [nimi, setNimi] = useState("")
-    const [osoite, setOsoite] = useState("")
-    const [aukiolo, setAukiolo] = useState("")
-    const [kuva, setKuva] = useState("")
-    const [tyyppi, setTyyppi] = useState("")
-    const [hintataso, setHintataso] = useState("")
-    const [arviointi, setArviointi] = useState("")
 
     const clearFields = () => {
         setNimi("")

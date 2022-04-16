@@ -6,14 +6,14 @@ import {useNavigate} from "react-router-dom"
 
 
 export default function KirjautuminenSivu() {
+
     const navigate = useNavigate();
-    const [customer, setCustomer] = useState("");
     const [puhNro, setPuhNro] = useState("")
     const [salasana, setSalasana] = useState("")
 
     const Kirjautuminen = async (puhNro, salasana) => {
 
-        let result = await fetch('http://localhost:3001/kirjautuminen',
+        let result = await fetch(`http://localhost:3001/kirjautuminen`,
         { method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
@@ -22,25 +22,25 @@ export default function KirjautuminenSivu() {
         })})
        
         if(result.status == 204){
-            const url = "http://localhost:3001/kirjautuminen/"+puhNro   
-                const result = await fetch(url).then((res)=>
+                const result = await fetch(`http://localhost:3001/kirjautuminen/${puhNro}`).then((res)=>
                   res.json()
                 )
-                setCustomer(result)
-                getIndex()
+                getIndex(result)
                 
         }else  {
             return alert("Puuttuvia tietoja")
         }    
     }                
             
-      const getIndex = () => {
-        let newCustomer = [...customer]
+      const getIndex = (item) => {
+        let newCustomer = [...item]
         let index = newCustomer.findIndex(i => i.puhnro === puhNro);    
         if(index !== -1){
-            let id = {...customer[index]}
-            let SendId = id.idAsiakas    
-              return navigate("/Etusivu/"+String(SendId), {replace: true})
+            let id = {...item[index]}
+            let SendId = id.idAsiakas
+            let type = id.tyyppi
+            console.log(type)   
+              return navigate(`/Etusivu/${SendId}/${type}`, {replace: true})
         }else {
             return alert("Käyttäjää ei löydy")
         }

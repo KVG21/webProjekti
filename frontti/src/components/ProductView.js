@@ -11,10 +11,9 @@ export default function ProductView() {
   const [customer, setCustomer] = useState("")
 
   const  {idRavintola,idAsiakas}  = useParams();
-  const url = "http://localhost:3001/tuote/"+idRavintola
 
   useEffect(async() =>{ //fetch items from backend api
-    const result = await fetch(url).then((res)=>
+    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
       res.json()
     )
     setProducts(result)

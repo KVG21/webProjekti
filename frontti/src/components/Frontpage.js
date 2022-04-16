@@ -8,14 +8,15 @@ import { Link, useParams } from "react-router-dom"
 
 export default function Frontpage() {
 
-  const {idAsiakas} = useParams();
 
+const {idAsiakas,tyyppi} = useParams();
 const [restaurant, setrestaurant] = useState([])
 const { search } = window.location;
 const query = new URLSearchParams(search).get('s');
 const [searchQuery, setSearchQuery] = useState(query || '');
 const filteredrestaurant = filterrestaurant(restaurant, searchQuery);
 
+  
 useEffect(async() => {
   const result = await fetch('http://localhost:3001/ravintola').then((res)=>
   res.json()
@@ -33,7 +34,7 @@ useEffect(async() => {
     />
     <div className="restaurantContainer">
         {filteredrestaurant.map(restaurant => (
-           <Link to={ "/ProductView/"+String(restaurant.idRavintola)+"/"+String(idAsiakas) }> 
+           <Link to={ `/ProductView/${restaurant.idRavintola}/${idAsiakas}` }> 
            <div className='Items'>
              <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
                <div className = "Tiedot">

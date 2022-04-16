@@ -6,14 +6,15 @@ import '../App.css'
 export default function ManageProducts() {
 
     const [products, setProducts] = useState([])
-
+    const [kategoria, setKategoria] = useState("")
+    const [tuotenimi, setTuotenimi] = useState("")
+    const [kuvaus, setKuvaus] = useState("")
+    const [hinta, setHinta] = useState("")
+    const [tuotekuva, setTuotekuva] = useState("")
     const  {idRavintola}  = useParams();
-    console.log(idRavintola)
-    const url = "http://localhost:3001/tuote/"+idRavintola
-    console.log(url)
 
   useEffect(async() =>{ //fetch items from backend api
-    const result = await fetch(url).then((res)=>
+    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
       res.json()
     )
     setProducts(result)
@@ -43,11 +44,6 @@ export default function ManageProducts() {
         )
         setProducts(resultTuote)
     }
-    const [kategoria, setKategoria] = useState("")
-    const [tuotenimi, setTuotenimi] = useState("")
-    const [kuvaus, setKuvaus] = useState("")
-    const [hinta, setHinta] = useState("")
-    const [tuotekuva, setTuotekuva] = useState("")
 
     const clearFields = () => {
         setKategoria("")

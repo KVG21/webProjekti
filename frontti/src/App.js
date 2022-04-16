@@ -20,7 +20,9 @@ function App() {
         <div>   
         <Routes>
             <Route path="/" element={ <KirjautuminenSivu/> }/>
-            <Route path="/Etusivu/:idAsiakas" element={ <Etusivu/> }/>
+            <Route path="/Etusivu/:idAsiakas" element={ <Etusivu/> }>
+              <Route path=":tyyppi" element = {<Etusivu/>}/>
+            </Route>
             <Route path="/Uloskirjautuminen" element={<Uloskirjautuminen/>}/>
             <Route path="/Rekisteroityminen" element={ <Rekisteroityminen/> }/>
 

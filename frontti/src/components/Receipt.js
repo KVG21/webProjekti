@@ -4,14 +4,14 @@ import { Link, useParams } from 'react-router-dom'
 import './styles/receipt.css'
 
 export default function Receipt() {
+    
     const [receipt, setreceipt] = useState([])
-
     const  {idAsiakas}  = useParams();
-    const url = "http://localhost:3001/historia/"+idAsiakas
+
 
   //fetchaus tietokannasta, haetaan kuittitietoja
     useEffect(async() => {
-        const result = await fetch(url).then((res)=>
+        const result = await fetch(`http://localhost:3001/historia/${idAsiakas}`).then((res)=>
         res.json()
         )
         setreceipt(result)

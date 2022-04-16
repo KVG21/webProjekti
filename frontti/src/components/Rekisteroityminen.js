@@ -4,26 +4,27 @@ import './styles/Kayttaja.css'
 
 
 export default function Rekisteroityminen(){
-    const Uusikayttaja = async(item) => {
-     await fetch('http://localhost:3001/asiakas',{method: 'POST',
-    headers:{'Content-type' : 'application/json'},
-     body: JSON.stringify({
+
+  const [etunimi, setEtunimi] = useState("")
+  const [sukunimi, setSukunimi] = useState("")
+  const [osoite, setOsoite] = useState ("")
+  const [puhnro, setPuhnro] = useState ("")
+  const [salasana, setSalasana] = useState("")
+  const [tyyppi, setTyyppi] = useState(0)
+
+  const Uusikayttaja = async(item) => {
+    await fetch('http://localhost:3001/asiakas',{method: 'POST',
+      headers:{'Content-type' : 'application/json'},
+      body: JSON.stringify({
        etunimi: item.etunimi,
        sukunimi: item.sukunimi,
        osoite: item.osoite,
        puhnro: item.puhnro,
        salasana: item.salasana,
        tyyppi: item.tyyppi
-
 })
     })
     }
-    const [etunimi, setEtunimi] = useState("")
-    const [sukunimi, setSukunimi] = useState("")
-    const [osoite, setOsoite] = useState ("")
-    const [puhnro, setPuhnro] = useState ("")
-    const [salasana, setSalasana] = useState("")
-    const [tyyppi, setTyyppi] = useState(0)
 
        return(
          <div>

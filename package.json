@@ -1,11 +1,15 @@
 {
-  "name": "backend",
+  "name": "kvgwolttvt21kmo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "npm run build && node index.js"
+  },
+  "postinstall": {
+    "postinstall": "npm run build && node index.js",
+    "start":"node index.js"
   },
   "author": "",
   "license": "ISC",

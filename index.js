@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
@@ -29,8 +29,8 @@ app.use('/kirjautuminen',kirjautuminenrouter);
 
 app.use(express.static('build'))
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
 
 module.exports = app;

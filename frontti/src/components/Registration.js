@@ -2,8 +2,11 @@ import React, {useState} from 'react';
 import { Link } from "react-router-dom";
 import './styles/Kayttaja.css'
 
+/* Rekisteröinnissä haetaan backendin asiakas taulusta paikat täytettäville tiedoille joilla luodaan uusi käyttäjä.
+käyttäjiä on kahdenlaisia, on joko tyyppi 0 joka on asiakas tai tyyppi 1 joka on ravintoloitsia
+*/
 
-export default function Rekisteroityminen(){
+export default function Registration(){
 
   const [etunimi, setEtunimi] = useState("")
   const [sukunimi, setSukunimi] = useState("")

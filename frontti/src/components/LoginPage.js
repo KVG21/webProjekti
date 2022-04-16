@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import './styles/Kirjautuminen.css'
+import './styles/loginPage.css'
 import { Link } from "react-router-dom";
 import {useNavigate} from "react-router-dom"
 
+/*Login page alustetaan ja kutsutaan backendin kirjautumista josta pyydetään seuraavat tiedot
+   salasana sekä puhelinnumero. Puhelinumero vastaa tässä ohjelmassa käyttäjätunnusta*/
 
 
-export default function KirjautuminenSivu() {
+export default function LoginPage() {
 
     const navigate = useNavigate();
     const [puhNro, setPuhNro] = useState("")

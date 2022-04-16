@@ -2,14 +2,12 @@ import React from 'react'
 
 import Etusivu from './components/Frontpage'
 import Ravintoloitsija from './components/ManageRestaurants';
-import Rekisteroityminen from './components/Rekisteroityminen'
-import KirjautuminenSivu from './components/KirjautuminenSivu'
-
+import Rekisteroityminen from './components/Registration'
+import KirjautuminenSivu from './components/LoginPage'
 import Receipt from './components/Receipt'
 import ProductView from './components/ProductView';
 import Tuotehallinta from './components/ManageProducts';
 import Asiakas from './components/ManageAccount';
-
 import {BrowserRouter, Routes, Route,} from 'react-router-dom';
 
 function App() {

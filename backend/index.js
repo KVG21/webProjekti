@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 const express = require('express')
 const app = express()
-const port = 3001
+const port = 3000
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
@@ -20,9 +20,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/hello', (req, res) => {
   res.send('Hello World!')
 })
 
@@ -31,6 +30,8 @@ app.use('/ravintola',ravintolarouter);
 app.use('/tuote',tuoterouter);
 app.use('/historia',historiarouter);
 app.use('/kirjautuminen',kirjautuminenrouter);
+
+app.use(express.static('build'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

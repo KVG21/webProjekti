@@ -11,7 +11,7 @@ export default function Receipt() {
 
   //fetchaus tietokannasta, haetaan kuittitietoja
     useEffect(async() => {
-        const result = await fetch(`http://localhost:3001/historia/${idAsiakas}`).then((res)=>
+        const result = await fetch(`http://localhost:3000/historia/${idAsiakas}`).then((res)=>
         res.json()
         )
         setreceipt(result)

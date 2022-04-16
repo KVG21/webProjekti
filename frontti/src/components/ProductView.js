@@ -13,14 +13,14 @@ export default function ProductView() {
   const  {idRavintola,idAsiakas}  = useParams();
 
   useEffect(async() =>{ //fetch items from backend api
-    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
+    const result = await fetch(`http://localhost:3000/tuote/${idRavintola}`).then((res)=>
       res.json()
     )
     setProducts(result)
   }, [])
 
   useEffect(async() =>{
-    const result = await fetch(`http://localhost:3001/asiakas/${idAsiakas}`).then((res)=>
+    const result = await fetch(`http://localhost:3000/asiakas/${idAsiakas}`).then((res)=>
       res.json()
       )
       setCustomer(result)
@@ -83,7 +83,7 @@ export default function ProductView() {
     if(Items.length === 0 || Address.length === 0) {
         return alert("Lisää tuote koriin tai osoite ennen ostoa")
       } else {
-        fetch(`http://localhost:3001/historia`,{ method: 'POST',
+        fetch(`http://localhost:3000/historia`,{ method: 'POST',
           headers:{'Content-Type' : 'application/json'},
           body: JSON.stringify({
           osoite : address,

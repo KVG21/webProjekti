@@ -16,7 +16,7 @@ export default function Registration(){
   const [tyyppi, setTyyppi] = useState(0)
 
   const Uusikayttaja = async(item) => {
-    await fetch('http://localhost:3001/asiakas',{method: 'POST',
+    await fetch('http://localhost:3000/asiakas',{method: 'POST',
       headers:{'Content-type' : 'application/json'},
       body: JSON.stringify({
        etunimi: item.etunimi,

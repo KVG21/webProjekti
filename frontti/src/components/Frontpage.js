@@ -18,7 +18,7 @@ const filteredrestaurant = filterrestaurant(restaurant, searchQuery);
 
   
 useEffect(async() => {
-  const result = await fetch('http://localhost:3001/ravintola').then((res)=>
+  const result = await fetch('http://localhost:3000/ravintola').then((res)=>
   res.json()
   )
   setrestaurant(result)

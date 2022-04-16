@@ -15,7 +15,7 @@ export default function LoginPage() {
 
     const Kirjautuminen = async (puhNro, salasana) => {
 
-        let result = await fetch(`http://localhost:3001/kirjautuminen`,
+        let result = await fetch(`http://localhost:3000/kirjautuminen`,
         { method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
@@ -24,7 +24,7 @@ export default function LoginPage() {
         })})
        
         if(result.status == 204){
-                const result = await fetch(`http://localhost:3001/kirjautuminen/${puhNro}`).then((res)=>
+                const result = await fetch(`http://localhost:3000/kirjautuminen/${puhNro}`).then((res)=>
                   res.json()
                 )
                 getIndex(result)
@@ -55,7 +55,7 @@ return (
     <div className="mainLoginContainer">
       <h1 className="title">Kirjautuminen</h1>
         <div className="inputs"> Puhnro <br></br> <input value={puhNro} onChange={(event) => setPuhNro(event.currentTarget.value)} type="text"/></div>
-          <div className="inputs"> Salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
+          <div className="inputs"> Salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="password"/></div>
           <button className="buttons" onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
         <Link to="/Rekisteroityminen"><button className="buttons">Rekisteröidy käyttäjäksi</button></Link>
     </div>

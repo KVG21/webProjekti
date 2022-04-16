@@ -5,18 +5,17 @@ const cors = require('cors');
 const logger = require('morgan');
 
 const express = require('express')
+
+const PORT = process.env.PORT || '3000'
 const app = express()
+app.set("port", PORT);
+
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
 const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
-
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log('listening on port %d in %s mode', this.address().port, app.settings.env);
-})
 
 app.use(bodyParser.json());
 app.use(cors());

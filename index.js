@@ -7,6 +7,7 @@ const logger = require('morgan');
 const express = require('express')
 const app = express()
 const port = 3000
+var http = require('http')
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
@@ -14,6 +15,8 @@ const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
+
+http.createServer(function (req, res){
 app.get('/hello', (req, res) => {
   res.send('Hello World!')
 })
@@ -30,6 +33,7 @@ app.use('/historia',historiarouter);
 app.use('/kirjautuminen',kirjautuminenrouter);
 
 app.use(express.static('build'))
+}).listen(process.env.PORT)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

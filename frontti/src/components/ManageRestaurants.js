@@ -65,7 +65,7 @@ export default function ManageRestaurants() {
         <div>
             <div className="name">
             <nav className="navigointi">
-           <Link className="navName" to={"/Etusivu/"+idAsiakas}> <button className="navbtn">Etusivu</button></Link>
+           <Link className="navName" to={`/Etusivu/${idAsiakas}`}> <button className="navbtn">Etusivu</button></Link>
             </nav> 
             </div>
             <div className="restaurantCont">

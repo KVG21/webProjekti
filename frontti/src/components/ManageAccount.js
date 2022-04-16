@@ -7,16 +7,15 @@ export default function ManageAccount() {
     const [customer, setCustomer] = useState([])
 
     const {idAsiakas} = useParams();
-    const url = "http://localhost:3001/asiakas/"+idAsiakas
 
     useEffect(async() =>{
-        const result = await fetch(url).then((res)=>
+        const result = await fetch(`http://localhost:3001/asiakas/${idAsiakas}`).then((res)=>
         res.json()
         )
         setCustomer(result)
     }, [])
     const editCustomer = async (item) => {
-        await fetch (url, { method: 'PUT',
+        await fetch (`http://localhost:3001/asiakas/${idAsiakas}`, { method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
             puhnro: item.puhnro,
@@ -49,7 +48,7 @@ export default function ManageAccount() {
     <div>
         <div className="name">
             <nav className="navigointi">
-                <Link className="navName" to={"/Etusivu/"+String(idAsiakas)}> <button className="navbtn">Takaisin etusivulle</button></Link>
+                <Link className="navName" to={`/Etusivu/${idAsiakas}`}> <button className="navbtn">Takaisin etusivulle</button></Link>
             </nav>
         </div>
         <div className="customerContainer">

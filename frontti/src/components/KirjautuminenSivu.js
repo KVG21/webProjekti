@@ -48,14 +48,14 @@ export default function KirjautuminenSivu() {
 
     
 return (
-    <div>
-    <h1>Kirjautuminen</h1>
-        <div className="inputDesc"> Puhnro <br></br> <input value={puhNro} onChange={(event) => setPuhNro(event.currentTarget.value)} type="text"/></div>
-        <div className="inputDesc"> Salsana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
-        <button onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
-        <button className="navbtn"><Link className='navbtn' to="/Rekisteroityminen">Rekisteröidy käyttäjäksi</Link></button>
-</div>
-  )
-
-
-}
+  <div>
+  <div className="header">KVG RAFLA</div> 
+    <div className="mainLoginContainer">
+      <h1 className="title">Kirjautuminen</h1>
+        <div className="inputs"> Puhnro <br></br> <input value={puhNro} onChange={(event) => setPuhNro(event.currentTarget.value)} type="text"/></div>
+          <div className="inputs"> Salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
+          <button className="buttons" onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
+        <Link to="/Rekisteroityminen"><button className="buttons">Rekisteröidy käyttäjäksi</button></Link>
+    </div>
+    </div>
+)}

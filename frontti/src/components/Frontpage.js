@@ -34,18 +34,16 @@ useEffect(async() => {
     />
     <div className="restaurantContainer">
         {filteredrestaurant.map(restaurant => (
-           <Link to={ `/ProductView/${restaurant.idRavintola}/${idAsiakas}` }> 
-           <div className='Items'>
-             <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
-               <div className = "Information">
-                 <p>{restaurant.nimi}</p>
-                 <p>{restaurant.osoite}</p>
-                 <p>{restaurant.aukiolo}</p>
-                 <p>{restaurant.tyyppi}</p>
-                 <p>{restaurant.hintataso}</p>
-                 <p>{restaurant.arviointi}</p>
-               </div>                     
-             </div>     
+           <Link className="LinkDecoration" to={ `/ProductView/${restaurant.idRavintola}/${idAsiakas}` }> 
+            <div className='Items'>
+              <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
+                <div className = "Information">
+                  <h3>{restaurant.nimi}</h3>
+                  <p>{restaurant.osoite} | {restaurant.aukiolo} </p>
+                  <p>{restaurant.tyyppi} | {restaurant.hintataso} </p>
+                  <p> Arviointi : {restaurant.arviointi}</p>
+                </div>                     
+              </div>     
             </Link>
         ))}         
     </div>

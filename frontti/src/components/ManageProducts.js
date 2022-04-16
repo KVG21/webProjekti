@@ -58,8 +58,7 @@ export default function ManageProducts() {
     <div>
     <div className="name">
             <nav className="navigation">
-           <Link className="navName" to="/Ravintoloitsija"> <button className="navbtn">Takaisin</button></Link>
-           <Link className="navName" to="/Etusivu"> <button className="navbtn">Etusivu</button></Link>
+           <Link className="navName" to={`/Ravintoloitsija/${idRavintola}`}> <button className="navbtn">Takaisin</button></Link>
             </nav> 
     </div>        
     <div className="tuoteCont">

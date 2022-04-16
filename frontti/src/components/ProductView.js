@@ -99,7 +99,7 @@ export default function ProductView() {
   return (
     <div>
       <div className="header"> 
-            <Link className="navName" to={"/etusivu/"+String(idAsiakas)}>KVG RAFLA</Link>
+            <Link className="navName" to={`/etusivu/${idAsiakas}`}>KVG RAFLA</Link>
         </div>
       <div>
     </div>

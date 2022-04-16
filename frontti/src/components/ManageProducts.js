@@ -6,26 +6,27 @@ import '../App.css'
 export default function ManageProducts() {
 
     const [products, setProducts] = useState([])
-    const [kategoria, setKategoria] = useState("")
-    const [tuotenimi, setTuotenimi] = useState("")
-    const [kuvaus, setKuvaus] = useState("")
-    const [hinta, setHinta] = useState("")
-    const [tuotekuva, setTuotekuva] = useState("")
+    const [category, setCategory] = useState("")
+    const [name, setName] = useState("")
+    const [desc, setDesc] = useState("")
+    const [price, setPrice] = useState("")
+    const [picture, setPicture] = useState("")
+
     const  {idRavintola}  = useParams();
 
-  useEffect(async() =>{ //fetch items from backend api
+  useEffect(async() =>{ //Haetaan tuotteet backendistä
     const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
       res.json()
     )
     setProducts(result)
   }, [])
 
-    const deleteProduct = async(idTuote) => {
-        let uudetTuotteet = [...products];
-        let poistettuTuote = uudetTuotteet.findIndex(p => p.id === idTuote);
-        await fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'})
-        uudetTuotteet.splice(poistettuTuote, 1);
-        setProducts(uudetTuotteet);
+    const deleteProduct = async(idTuote) => { 
+        let newProds = [...products];
+        let deletedProd = newProds.findIndex(p => p.id === idTuote);
+        await fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'}) //Poistetaan tuote tietokannasta
+        newProds.splice(deletedProd, 1);  //Poistetaan tuote näkymästä
+        setProducts(newProds);  //Päivitetään näkymä poiston jälkeen
     }
 
     const createProduct = async(item) => {
@@ -37,20 +38,20 @@ export default function ManageProducts() {
         kuvaus: item.kuvaus,
         hinta: item.hinta,
         kuva: item.tuotekuva,
-        ravintolaID: Number(idRavintola),    
+        ravintolaID: Number(idRavintola),   //Talletetaan ravintolaID suoraan, jotta asiakkaan ei tarvitse itse sitä syöttää 
         })})
-        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => 
+        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => //Päivitetään näkymä lisäyksen jälkeen
         res.json()
         )
         setProducts(resultTuote)
     }
 
-    const clearFields = () => {
-        setKategoria("")
-        setTuotenimi("")
-        setKuvaus("")
-        setHinta("")
-        setTuotekuva("")
+    const clearFields = () => { //Tyhjennetään useState taulukot
+        setCategory("")
+        setName("")
+        setDesc("")
+        setPrice("")
+        setPicture("")
     }
 
   return (
@@ -63,15 +64,15 @@ export default function ManageProducts() {
     </div>        
     <div className="tuoteCont">
     <h2 className="manageTitle">Lisää tuote</h2>
-            <div className="inputDesc"> Kategoria <input value={kategoria} onChange={(event) => setKategoria(event.currentTarget.value)} type="text"/></div>
-            <div className="inputDesc"> Nimi <br></br><input value={tuotenimi} onChange={(event) => setTuotenimi(event.currentTarget.value)} type="text"/></div>
-            <div className="inputDesc"> Kuvaus <input value={kuvaus} onChange={(event) => setKuvaus(event.currentTarget.value)} type="text"/></div>
-            <div className="inputDesc"> Hinta <input value={hinta} onChange={(event) => setHinta(event.currentTarget.value)} type="text"/></div>
-            <div className="inputDesc"> Kuva URL <input value={tuotekuva} onChange={(event) => setTuotekuva(event.target.value)} type="text"/></div>
+            <div className="inputDesc"> Kategoria <input value={category} onChange={(event) => setCategory(event.currentTarget.value)} type="text"/></div>
+            <div className="inputDesc"> Nimi <br></br><input value={name} onChange={(event) => setName(event.currentTarget.value)} type="text"/></div>
+            <div className="inputDesc"> Kuvaus <input value={desc} onChange={(event) => setDesc(event.currentTarget.value)} type="text"/></div>
+            <div className="inputDesc"> Hinta <input value={price} onChange={(event) => setPrice(event.currentTarget.value)} type="text"/></div>
+            <div className="inputDesc"> Kuva URL <input value={picture} onChange={(event) => setPicture(event.target.value)} type="text"/></div>
 
                 <button className="savebtn" onClick={()=>{
                     createProduct({
-                    tuotenimi,kuvaus,hinta,tuotekuva
+                    tuotenimi: name,kuvaus: desc,hinta: price,tuotekuva: picture
                 })
                 clearFields();                            
                 }}>Tallenna</button>

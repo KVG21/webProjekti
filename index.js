@@ -17,11 +17,16 @@ const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
+
+app.listen(PORT,() => {
+  console.log(`App listening on port ${PORT}`);
+})
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/asiakas',asiakasrouter);
 app.use('/ravintola',ravintolarouter);

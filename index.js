@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');

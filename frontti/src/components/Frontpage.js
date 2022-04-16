@@ -37,7 +37,7 @@ useEffect(async() => {
            <Link to={ `/ProductView/${restaurant.idRavintola}/${idAsiakas}` }> 
            <div className='Items'>
              <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
-               <div className = "Tiedot">
+               <div className = "Information">
                  <p>{restaurant.nimi}</p>
                  <p>{restaurant.osoite}</p>
                  <p>{restaurant.aukiolo}</p>

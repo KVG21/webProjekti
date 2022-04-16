@@ -14,6 +14,9 @@ const tuoterouter = require('./routes/tuote');
 const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
+app.get('/', (req, res) => {
+  res.send('build')
+})
 app.use(bodyParser.json());
 app.use(cors());
 app.use(logger('dev'));
@@ -26,7 +29,7 @@ app.use('/tuote',tuoterouter);
 app.use('/historia',historiarouter);
 app.use('/kirjautuminen',kirjautuminenrouter);
 
-app.use('/',express.static('build'))
+app.use(express.static('build'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

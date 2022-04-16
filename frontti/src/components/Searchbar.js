@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-
-//asettelua lähinnä sis. nappit ja linkit
+//nimi searchbar hämää, oikea searchbar on alustettu frontpagessa. täällä vain se asetettu "fyysisesti"
+//asettelua lähinnä sis. nappit ja linkit. Searchin komentojen alustaminen
 const SearchBar = ({ searchQuery, setSearchQuery,idAsiakas }) => ( 
   <form action="/" method="get"><div className='name'>
   <h1>Kvg Rafla</h1>
@@ -22,6 +22,7 @@ const SearchBar = ({ searchQuery, setSearchQuery,idAsiakas }) => (
          </div>
          </div>
       <input
+      //searching valuet ja komennot asetetaan. 
        value={searchQuery}
        onInput={e => setSearchQuery(e.target.value)}
           type="text"

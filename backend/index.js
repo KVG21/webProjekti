@@ -20,11 +20,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
-app.get('/hello', (req, res) => {
-  res.send('Hello World!')
-})
-
 app.use('/asiakas',asiakasrouter);
 app.use('/ravintola',ravintolarouter);
 app.use('/tuote',tuoterouter);

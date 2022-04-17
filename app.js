@@ -28,7 +28,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/',express.static('build'))
+app.use(express.static('build'))
 app.use('/asiakas',asiakasrouter);
 app.use('/ravintola',ravintolarouter);
 app.use('/tuote',tuoterouter);

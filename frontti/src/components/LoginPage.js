@@ -15,7 +15,7 @@ export default function LoginPage() {
 
   const Kirjautuminen = async (puhNro, salasana) => {
 
-    let result = await fetch(`http://localhost:3001/kirjautuminen`,
+    let result = await fetch(`http://localhost:80/kirjautuminen`,
     { method: 'POST',
       headers:{'Content-Type' : 'application/json'},
       body: JSON.stringify({
@@ -24,7 +24,7 @@ export default function LoginPage() {
     })})
        
     if(result.status == 204){
-      const result = await fetch(`http://localhost:3001/kirjautuminen/${puhNro}`).then((res)=>
+      const result = await fetch(`http://localhost:80/kirjautuminen/${puhNro}`).then((res)=>
         res.json())
         getIndex(result)        
     }else{

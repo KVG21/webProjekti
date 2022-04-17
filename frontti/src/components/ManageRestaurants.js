@@ -17,7 +17,7 @@ export default function ManageRestaurants() {
     const {idAsiakas} = useParams();
 
     useEffect(async () => {
-        const result = await fetch(`http://localhost:3001/ravintola/${idAsiakas}`).then((res) => 
+        const result = await fetch(`http://localhost:80/ravintola/${idAsiakas}`).then((res) => 
         res.json()
         )
         setRestaurants(result)
@@ -26,14 +26,14 @@ export default function ManageRestaurants() {
     const deleteRestaurant = async (idRavintola) => {
         let uudetRaflat = [...restaurants];
         let poistettu = uudetRaflat.findIndex(p => p.id === idRavintola);
-        await fetch(`http://localhost:3001/ravintola/${idRavintola}`, { method: 'DELETE'})
+        await fetch(`http://localhost:80/ravintola/${idRavintola}`, { method: 'DELETE'})
         uudetRaflat.splice(poistettu, 1);
         setRestaurants(uudetRaflat);
     }
 
     
     const createRestaurant = async (item) => {
-        await fetch(`http://localhost:3001/ravintola`,{ method: 'POST',
+        await fetch(`http://localhost:80/ravintola`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
         nimi: item.nimi,
@@ -45,7 +45,7 @@ export default function ManageRestaurants() {
         arviointi: item.arviointi,
         asiakasID: Number(idAsiakas),  
         })})
-        const result = await fetch(`http://localhost:3001/ravintola/${idAsiakas}`).then((res) => 
+        const result = await fetch(`http://localhost:80/ravintola/${idAsiakas}`).then((res) => 
         res.json()
         )
         setRestaurants(result)

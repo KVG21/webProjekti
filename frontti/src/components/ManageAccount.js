@@ -13,14 +13,14 @@ export default function ManageAccount() {
     const [salasana, setSalasana] = useState("")
 
     useEffect(async() =>{
-        const result = await fetch(`http://localhost:3001/asiakas/${idAsiakas}`).then((res)=>
+        const result = await fetch(`http://localhost:80/asiakas/${idAsiakas}`).then((res)=>
         res.json()
         )
         setCustomer(result)
     }, [])
 
     const editCustomer = async (item) => {
-        await fetch (`http://localhost:3001/asiakas/${idAsiakas}`, { method: 'PUT',
+        await fetch (`http://localhost:80/asiakas/${idAsiakas}`, { method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
             puhnro: item.puhnro,
@@ -28,7 +28,7 @@ export default function ManageAccount() {
             salasana: item.salasana,
             idAsiakas: Number(idAsiakas),
         })})
-        const result = await fetch(`http://localhost:3001/asiakas`).then((res) =>
+        const result = await fetch(`http://localhost:80/asiakas`).then((res) =>
         res.json())
         setCustomer(result)
     }

@@ -23,7 +23,7 @@ if(param === "1") {
 }
 
 useEffect(async() => {
-  const result = await fetch('http://localhost:3001/ravintola').then((res)=>
+  const result = await fetch('http://localhost:80/ravintola').then((res)=>
   res.json()
   )
   setrestaurant(result)

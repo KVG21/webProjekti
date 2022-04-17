@@ -15,13 +15,13 @@ export default function ProductView() {
   const  {idRavintola,idAsiakas}  = useParams();
 
   useEffect(async() =>{ //Haetaan tiedot backendistä
-    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
+    const result = await fetch(`http://localhost:80/tuote/${idRavintola}`).then((res)=>
       res.json())
     setProducts(result)
   }, [])
 
   useEffect(async() =>{ // Haetaan tiedot backendistä
-    const result = await fetch(`http://localhost:3001/asiakas/${idAsiakas}`).then((res)=>
+    const result = await fetch(`http://localhost:80/asiakas/${idAsiakas}`).then((res)=>
       res.json())
     setCustomer(result)
   }, [])
@@ -81,7 +81,7 @@ export default function ProductView() {
     if(Items.length === 0 || Address.length === 0) { //tarkistetaan ettei kuitti ole tyhjää täynnä, eli osoite täytyy antaa ja jotain on koriin lisättävä
         setBuyInfo("Jokin meni pieleen, Annoitko osoitteen tai onko korissasi mitään?")
       } else {
-        fetch(`http://localhost:3001/historia`,{ method: 'POST',
+        fetch(`http://localhost:80/historia`,{ method: 'POST',
           headers:{'Content-Type' : 'application/json'},
           body: JSON.stringify({
             osoite : address,

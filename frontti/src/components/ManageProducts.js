@@ -15,7 +15,7 @@ export default function ManageProducts() {
     const  {idRavintola,idAsiakas}  = useParams();
 
   useEffect(async() =>{ //Haetaan tuotteet backendistä
-    const result = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res)=>
+    const result = await fetch(`http://localhost:80/tuote/${idRavintola}`).then((res)=>
       res.json()
     )
     setProducts(result)
@@ -24,13 +24,13 @@ export default function ManageProducts() {
     const deleteProduct = async(idTuote) => { 
         let newProds = [...products];
         let deletedProd = newProds.findIndex(p => p.id === idTuote);
-        await fetch(`http://localhost:3001/tuote/${idTuote}`, { method: 'DELETE'}) //Poistetaan tuote tietokannasta
+        await fetch(`http://localhost:80/tuote/${idTuote}`, { method: 'DELETE'}) //Poistetaan tuote tietokannasta
         newProds.splice(deletedProd, 1);  //Poistetaan tuote näkymästä
         setProducts(newProds);  //Päivitetään näkymä poiston jälkeen
     }
 
     const createProduct = async(item) => {
-        await fetch(`http://localhost:3001/tuote`,{ method: 'POST',
+        await fetch(`http://localhost:80/tuote`,{ method: 'POST',
         headers:{'Content-Type' : 'application/json'},
         body: JSON.stringify({
           kategoria: item.kategoria,
@@ -40,7 +40,7 @@ export default function ManageProducts() {
           kuva: item.tuotekuva,
         ravintolaID: Number(idRavintola),   //Talletetaan ravintolaID suoraan, jotta asiakkaan ei tarvitse itse sitä syöttää 
         })})
-        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => //Päivitetään näkymä lisäyksen jälkeen
+        const resultTuote = await fetch(`http://localhost:80/tuote`).then((res) => //Päivitetään näkymä lisäyksen jälkeen
         res.json()
         )
         setProducts(resultTuote)

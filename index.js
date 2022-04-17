@@ -20,7 +20,7 @@ const kirjautuminenrouter = require('./routes/kirjautuminen')
 
 app.listen(PORT,() => {
   console.log(`App listening on port ${PORT}`);
-})
+});
 
 app.use(bodyParser.json());
 app.use(cors());

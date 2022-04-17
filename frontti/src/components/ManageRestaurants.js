@@ -111,7 +111,7 @@ export default function ManageRestaurants() {
                                         <h2 className="manageTitle">Ravintolasi</h2>
                                         {restaurants.map(({idRavintola, nimi}) =>(
                                             <><p>{nimi}</p><nav className="navigointi">
-                                                <Link className="navName" to={"/Tuotehallinta/"+String(idRavintola)}> <button className="navbtn">Hallitse tuotteita</button></Link>
+                                                <Link className="navName" to={`/Tuotehallinta/${idRavintola}/${idAsiakas}`}> <button className="navbtn">Hallitse tuotteita</button></Link>
                                                 <button className="deletebtn" onClick={ ()=>{
                                         deleteRestaurant(idRavintola)
 

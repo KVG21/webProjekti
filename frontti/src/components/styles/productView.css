@@ -10,19 +10,21 @@
 .productContainer {
   display: column;
   padding: 10px;
-  width: 90%;
+  width: 100%;
   margin-right: 5%;
 }
 
 .products {
   display: flex;
-  justify-content: space-between;
   border: 2px solid black;
-  font-size: 20px;
+  font-size: 15px;
+  width: 500px;
   font-weight: bolder;
   padding: 20px;
+  margin-top: 5%;
+  margin-left: 5%;
   margin-bottom: 5%;
-  background-color: rgba(245, 174, 108, 0.548);
+  background-color: rgba(245, 174, 108, 0.673);
 }
 
 .shoppingCartContainer {
@@ -47,23 +49,16 @@
   font-size: 40px;
   text-align: center;
   font-weight: Bold;
-  font-style: italic
+  font-style: italic;
+  border-bottom: 1px solid black;
 }
 
 .subButtons{
+  height: 30%;
   background-color: green;
   border-radius: 8px;
   margin-top: 10px;
   font-Size: 30px;
-  width: 50px;
-}
-
-.buyButton {
-  background-color: rgb(122, 0, 128);
-  border-radius: 8px;
-  margin-top: 10px;
-  font-Size: 30px;
-  width: 55%;
 }
 
 .recapitulationContainer {
@@ -82,10 +77,18 @@
   background-color: red;
 }
 
+.infoTxt {
+  color: red
+}
+
+.blue {
+  background-color: rgb(7, 65, 255);
+}
 .productImg{
-width:60px;
-height:60px;
-border: 2px solid black;
+  width:250px;
+  height:195px;
+  border: 2px solid black;
+  margin-top: 50px;
 }
 
 .header{
@@ -101,6 +104,15 @@ width: 100%;
 margin-left:4px;
 }
 
+.productCont1 {
+  justify-content: center;
+  display: flex;
+}
+
+.productCont2 {
+  display: column;
+  width: 100%;
+}
 
 
 

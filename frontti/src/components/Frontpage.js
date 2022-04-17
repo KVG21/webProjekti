@@ -16,7 +16,12 @@ const query = new URLSearchParams(search).get('s');
 const [searchQuery, setSearchQuery] = useState(query || '');
 const filteredrestaurant = filterrestaurant(restaurant, searchQuery);
 
-  
+const param = tyyppi; 
+let managementMode = <></>
+if(param === "1") {
+  managementMode = <Link className="navName" to={`/Ravintoloitsija/${idAsiakas}`}> <button className="navbtn">Ravintoloitsija</button></Link>
+}
+
 useEffect(async() => {
   const result = await fetch('http://localhost:3001/ravintola').then((res)=>
   res.json()
@@ -31,6 +36,7 @@ useEffect(async() => {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         idAsiakas={idAsiakas}
+        managementMode={managementMode}
     />
     <div className="restaurantContainer">
         {filteredrestaurant.map(restaurant => (
@@ -39,8 +45,8 @@ useEffect(async() => {
               <img className="restaurantPic"src={restaurant.kuva} alt={restaurant.nimi} />
                 <div className = "Information">
                   <h3>{restaurant.nimi}</h3>
-                  <p>{restaurant.osoite} | {restaurant.aukiolo} </p>
-                  <p>{restaurant.tyyppi} | {restaurant.hintataso} </p>
+                    <p>{restaurant.osoite} | {restaurant.aukiolo} </p>
+                    <p>{restaurant.tyyppi} | {restaurant.hintataso} </p>
                   <p> Arviointi : {restaurant.arviointi}</p>
                 </div>                     
               </div>     

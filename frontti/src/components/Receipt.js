@@ -20,20 +20,21 @@ export default function Receipt() {
     
 
 //tyylittelyä containerit lähinnä, mappaus, näyttää kuitissa tiedot
-    return (
-        <div>
+return (
+    <div>
         <div className="searchBarContainer">
-        <div className='receiptContainer'>
-        <Link className="navName" to={`/Etusivu/${idAsiakas}`}> <button className="navbtn">Etusivu</button></Link>
+            <div className='receiptContainer'>
+                <Link className="navName" to={`/Etusivu/${idAsiakas}`}> <button className="navbtn">Etusivu</button></Link>
+            </div>
         </div>
+            {receipt.map(({osoite, pvm, tuotteet, summa}) => (
+                <div className="clients_receipt">
+                    <p>{osoite}</p>
+                    <p>{pvm}</p>
+                    <p>{tuotteet}</p>
+                    <p>{summa} $</p>
+                </div>
+            ))}
         </div>
-        {receipt.map(({osoite, pvm, tuotteet, summa}) => (
-                    <div className="clients_receipt">
-                        <p>{osoite}</p>
-                        <p>{pvm}</p>
-                        <p>{tuotteet}</p>
-                        <p>{summa} $</p>
-        </div>
-        ))}</div>
     )
 }

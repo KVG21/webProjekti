@@ -30,11 +30,9 @@ function App() {
 
             <Route path="/Ravintoloitsija/:idAsiakas" element={<Ravintoloitsija />} />
 
-            <Route path="/Tuotehallinta/:idRavintola" element={ <Tuotehallinta/> } />
+            <Route path="/Tuotehallinta/:idRavintola/:idAsiakas" element={ <Tuotehallinta/> } />
 
             <Route path="/Asiakas/:idAsiakas" element={ <Asiakas/> }/>
-                
-
         </Routes>
         </div>
     </BrowserRouter>

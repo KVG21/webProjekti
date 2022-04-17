@@ -34,7 +34,6 @@ app.use('/ravintola',ravintolarouter);
 app.use('/tuote',tuoterouter);
 app.use('/historia',historiarouter);
 app.use('/kirjautuminen',kirjautuminenrouter);
-app.use('/static', express.static(path.join(__dirname, 'build')))
 
 
 

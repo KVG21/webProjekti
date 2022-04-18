@@ -53,7 +53,7 @@ return (
       <div className="mainLoginContainer">
         <h1 className="title">Kirjautuminen</h1>
           <div className="inputs"> Puhnro <br></br> <input value={puhNro} onChange={(event) => setPuhNro(event.currentTarget.value)} type="text"/></div>
-            <div className="inputs"> Salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
+            <div className="inputs"> Salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="password"/></div>
           <button className="buttons" onClick={ () => Kirjautuminen(puhNro , salasana)}>Kirjaudu sisään</button>
         <Link to="/Rekisteroityminen"><button className="buttons">Rekisteröidy käyttäjäksi</button></Link>
     </div>

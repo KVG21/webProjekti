@@ -4,11 +4,8 @@ const cors = require('cors');
 const logger = require('morgan');
 const express = require('express')
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 80;
 const app = express()
-
-
-app.use(express.static('build'))
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
@@ -27,9 +24,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send(build);
-})
+app.use(express.static(path.join(__dirname,'build')))
 app.use('/asiakas',asiakasrouter);
 app.use('/ravintola',ravintolarouter);
 app.use('/tuote',tuoterouter);

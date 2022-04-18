@@ -1,10 +1,10 @@
 const mysql = require('mysql');
-const aws = require('aws-sdk');
+const dbconfig = require('./db.config')
 
-var connection = new aws.Connection({
-	host : process.env.HOST,
-	user: process.env.USER,
-	password: process.env.PASSWORD,
-	database: process.env.DB
+var connection = mysql.createPool({
+	host : dbconfig.HOST,
+	user: dbconfig.USER,
+	password: dbconfig.PASSWORD,
+	database: dbconfig.DB
 });
 module.exports = connection

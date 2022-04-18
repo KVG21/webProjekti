@@ -4,11 +4,11 @@ const cors = require('cors');
 const logger = require('morgan');
 const express = require('express')
 
-
-const PORT = process.env.PORT
+const port = process.env.PORT;
 const app = express()
-app.set("port", PORT);
 
+
+app.use(express.static('build'))
 
 const asiakasrouter = require('./routes/asiakas');
 const ravintolarouter = require('./routes/ravintola');
@@ -17,8 +17,8 @@ const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
 
-app.listen(PORT,() => {
-  console.log(`App listening on port ${PORT}`);
+app.listen(port,() => {
+  console.log(`App listening on port ${port}`);
 });
 
 app.use(bodyParser.json());
@@ -27,7 +27,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(build))
+app.get('/', (req, res) => {
+  res.send(build);
+})
 app.use('/asiakas',asiakasrouter);
 app.use('/ravintola',ravintolarouter);
 app.use('/tuote',tuoterouter);

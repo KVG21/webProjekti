@@ -4,7 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "author": "",
@@ -17,9 +16,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
-  },
-  "engines": {
-    "node": "14.x"
+    "mysql": "^2.18.1",
+    "serve": "^13.0.2"
   }
 }

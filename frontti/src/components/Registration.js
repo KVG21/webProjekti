@@ -43,7 +43,7 @@ export default function Registration(){
                 <div className='inputDesc'>sukunimi <br></br> <input value={sukunimi} onChange={(event) => setSukunimi(event.currentTarget.value)} type="text"/></div>
                   <div className='inputDesc'>osoite <br></br> <input value={osoite} onChange={(event) => setOsoite(event.currentTarget.value)} type="text"/></div>
                     <div className='inputDesc'>puhnro <br></br> <input value={puhnro} onChange={(event) => setPuhnro(event.currentTarget.value)} type="text"/></div>
-                      <div className='inputDesc'>salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="text"/></div>
+                      <div className='inputDesc'>salasana <br></br> <input value={salasana} onChange={(event) => setSalasana(event.currentTarget.value)} type="password"/></div>
                     <div className="dropdown">
                       <p>Tyyppi</p>
                         <select id="tyyppi" onChange={(event) => setTyyppi(event.currentTarget.value)}>

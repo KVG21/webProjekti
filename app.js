@@ -18,7 +18,7 @@ const historiarouter = require('./routes/historia');
 const kirjautuminenrouter = require('./routes/kirjautuminen')
 
 
-app.listen(PORT,() => {
+app.listen(process.env.PORT || 80,() => {
   console.log(`App listening on port ${PORT}`);
 });
 

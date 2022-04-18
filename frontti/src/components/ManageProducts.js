@@ -40,7 +40,7 @@ export default function ManageProducts() {
           kuva: item.tuotekuva,
         ravintolaID: Number(idRavintola),   //Talletetaan ravintolaID suoraan, jotta asiakkaan ei tarvitse itse sitä syöttää 
         })})
-        const resultTuote = await fetch(`http://localhost:3001/tuote`).then((res) => //Päivitetään näkymä lisäyksen jälkeen
+        const resultTuote = await fetch(`http://localhost:3001/tuote/${idRavintola}`).then((res) => //Päivitetään näkymä lisäyksen jälkeen
         res.json()
         )
         setProducts(resultTuote)

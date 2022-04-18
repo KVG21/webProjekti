@@ -3,6 +3,7 @@
     flex-direction: column;
     float: left;
     margin-left: 500px;
+    background-color: pink;
 }
 .inputDesc{
     width: 200px;

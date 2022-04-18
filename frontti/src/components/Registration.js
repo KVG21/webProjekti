@@ -32,7 +32,9 @@ export default function Registration(){
          <div>
            <div className='etunimi'>
             <nav className='navigointi'>
+            <div className="searchBarContainer">
              <button classname="navbtn"><Link className='navbtn' to="/">Oliko sittenkin käyttäjä? Kirjaudu sisään</Link></button>
+             </div>
             </nav>
            </div>
             <div className="kayttajaCont">
